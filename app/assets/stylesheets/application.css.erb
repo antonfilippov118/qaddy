@@ -466,6 +466,7 @@ a:hover {
 	-moz-border-radius: 20px;
 	border-radius: 20px;
 	color:#FFF;
+	font-size: 18px;
 }
 
 .btn {
@@ -488,13 +489,52 @@ a:hover {
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #ffffff;
-}.btn:hover {
+}
+.btn:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
 	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
 	background-color:#dfdfdf;
-}.btn:active {
+}
+.btn:active {
 	position:relative;
 	top:1px;
 }
 
+/* form fields */
+div.field_with_errors  {
+	display: inline;
+}
+
+div.field_with_errors input {
+	background-color: #ffc0cb;
+}
+
+#errorExplanation {
+	font-size: 16px;
+}
+
+.flash {
+    text-align: center;
+    padding: 1em;
+    margin: 0 auto .5em;
+    clear: both;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.flash.error {
+    border: thin solid #8b0000;
+    background: #ffc0cb;
+}
+
+.flash.notice, .flash.info {
+    border: thin solid #0f0;
+    background: #efe;
+}
+
+.flash.warning {
+    border: thin solid #b8860b;
+    background: #ff0;
+}

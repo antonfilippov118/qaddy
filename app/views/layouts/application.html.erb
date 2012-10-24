@@ -11,29 +11,37 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-<div id="wrapper">
-	<div id="header-wrapper" class="container">
-		<div id="header" class="container">
-			<div id="logo">
-				<h1><%= image_tag("logo-qaddy.png", :alt => "Qaddy") %></h1>
+	<div id="wrapper">
+		<div id="header-wrapper" class="container">
+			<div id="header" class="container">
+				<div id="logo">
+					<h1><%= link_to image_tag("logo-qaddy.png", :alt => "Qaddy"), :controller => 'home', :action => 'index' %></h1>
+				</div>
 			</div>
+			<div></div>
 		</div>
-		<div></div>
-	</div>
-	<!-- end #header -->
+		<!-- end #header -->
 
-	<div id="page">
-		<%= yield %>
-		<div style="clear: both;">&nbsp;</div>
-	</div>
-	<div class="container"><%= image_tag("img03.png", :alt => "Shadow") %></div>
-	<!-- end #page -->
+		<div id="page">
+			<% if flash[:alert] %>
+			<p class="flash error"><%= flash[:alert] %></p>
+			<% end %>
+			<% if flash[:notice] %>
+			<p class="flash notice"><%= flash[:notice] %></p>
+			<% end %>
 
-	<div id="footer-content"></div>
-	<div id="footer">
-		<p>Copyright (c) 2012 Qaddy. All rights reserved. </p>
+			<%= yield %>
+
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<div class="container"><%= image_tag("img03.png", :alt => "Shadow") %></div>
+		<!-- end #page -->
+
+		<div id="footer-content"></div>
+		<div id="footer">
+			<p>Copyright (c) <%= Time.now.year %> Qaddy. All rights reserved. </p>
+		</div>
+		<!-- end #footer -->
 	</div>
-	<!-- end #footer -->
-</div>
 </body>
 </html>
