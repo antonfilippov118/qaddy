@@ -1,6 +1,7 @@
 Qaddy::Application.routes.draw do
   match '/' => 'home#index', :as => 'message', :via => :get
   match '/' => 'home#send_email', :as => 'message', :via => :post
+  match '/signup' => 'home#signup', :via => :get
   root :to => "home#index"
 
   # The priority is based upon order of creation:

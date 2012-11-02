@@ -17,4 +17,9 @@ class HomeController < ApplicationController
       render :index
     end  	
   end
+
+  def signup
+    render "signup", :layout => "signup"
+  end
+
 end
