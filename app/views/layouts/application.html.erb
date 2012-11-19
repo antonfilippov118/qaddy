@@ -9,39 +9,34 @@
 	<%= stylesheet_link_tag "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
+	<meta property="og:title" content="GetQaddy.com - GetQaddy tag line here" /><meta property="og:type" content="company" /><meta property="og:site_name" content="GetQaddy.com" /><meta property="og:url" content="http://www.getqaddy.com/signup" /><meta property="og:image" content="https://launchrock-assets.s3.amazonaws.com/facebook-files/Fna5QDBTVbHxS9k.png" /><meta property="og:description" content="GetQaddy rocks!" />
 </head>
 <body>
 	<div id="wrapper">
-		<div id="header-wrapper" class="container">
-			<div id="header" class="container">
+
+		<div id="header-wrapper">
+			<div id="header">
+	    		<div id="menu"><br/>Attract new online traffic in a <a href="#info">cost-efficient</a> way.</div>
 				<div id="logo">
-					<h1><%= link_to image_tag("logo-qaddy.png", :alt => "Qaddy"), :controller => 'home', :action => 'index' %></h1>
+					<h1><%= image_tag("logo-qaddy.png", :alt => "Qaddy") %></h1>
 				</div>
 			</div>
 			<div></div>
 		</div>
+		<div id="header_bot"></div>
 		<!-- end #header -->
 
 		<div id="page">
-			<% if flash[:alert] %>
-			<p class="flash error"><%= flash[:alert] %></p>
-			<% end %>
-			<% if flash[:notice] %>
-			<p class="flash notice"><%= flash[:notice] %></p>
-			<% end %>
-
 			<%= yield %>
-
-			<div style="clear: both;">&nbsp;</div>
 		</div>
-		<div class="container"><%= image_tag("img03.png", :alt => "Shadow") %></div>
 		<!-- end #page -->
 
-		<div id="footer-content"></div>
-		<div id="footer">
-			<p>Copyright (c) <%= Time.now.year %> GetQaddy.com. All rights reserved. </p>
-		</div>
-		<!-- end #footer -->
 	</div>
+
+	<div id="footer">
+		<p>Copyright (c) <%= Time.now.year %> Qaddy. All rights reserved. </p>
+	</div>
+	<!-- end #footer -->
+
 </body>
 </html>

@@ -6,4 +6,9 @@ class HomeController < ApplicationController
   def signup
     render "signup", :layout => "signup"
   end
+
+  def newsignup
+    render "newsignup"
+	end
+
 end
