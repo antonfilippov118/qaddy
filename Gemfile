@@ -14,6 +14,7 @@ end
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 group :production do
@@ -33,7 +34,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'bootstrap-sass', '2.1'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

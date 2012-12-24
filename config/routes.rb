@@ -1,8 +1,20 @@
 Qaddy::Application.routes.draw do
-  match '/' => 'home#index', :as => 'message', :via => :get
-  match '/signup' => 'home#signup', :via => :get
-  match '/newsignup' => 'home#newsignup', :via => :get
-  root :to => "home#index"
+  resources :users
+
+  # static_pages
+  match '/newhome', to: 'static_pages#index'
+  match '/about', to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+  match '/help', to: 'static_pages#help'
+  match '/news', to: 'static_pages#news'
+
+  # users
+  match '/signup', to: 'users#new'
+  # launchrock
+  match '/launch', to: 'launchrock#launch', via: :get
+
+  root :to => "launchrock#index"
+  # root :to => "static_pages#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
