@@ -55,5 +55,8 @@ module Qaddy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Manually precompile some assets
+    config.assets.precompile += ['launchrock.css']
   end
 end
