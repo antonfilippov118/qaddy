@@ -11,11 +11,12 @@ Qaddy::Application.routes.draw do
   # users
   match '/signup', to: 'users#new'
 
-  # launchrock
-  # match '/launch', to: 'launchrock#launch', via: :get
-
-  # root :to => "launchrock#index"
+  # root for staging
   root :to => "static_pages#index"
+
+  # root for production
+  # root :to => "launchrock#index"
+  # match '/launch', to: 'launchrock#launch', via: :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
