@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :destroy]
+  before_filter :correct_user, only: [:show, :edit, :update, :destroy]
+  # TODO: protect :index with admin flag
+
   # GET /users
   # GET /users.json
   def index
@@ -34,7 +38,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -57,11 +60,13 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
-
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        flash[:success] = "Profile updated"
+        format.html do
+          sign_in @user
+          redirect_to @user
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -81,4 +86,20 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-end
+
+  
+  private
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
+
+  end
