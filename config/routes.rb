@@ -1,5 +1,6 @@
 Qaddy::Application.routes.draw do
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   # static_pages
   # match '/newhome', to: 'static_pages#index'
@@ -8,8 +9,10 @@ Qaddy::Application.routes.draw do
   match '/help', to: 'static_pages#help'
   match '/news', to: 'static_pages#news'
 
-  # users
+  # users / sessions
   match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   # root for staging
   root :to => "static_pages#index"
