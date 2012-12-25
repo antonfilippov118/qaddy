@@ -1,4 +1,6 @@
 Qaddy::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
