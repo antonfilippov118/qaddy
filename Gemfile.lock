@@ -47,7 +47,8 @@ GEM
       activesupport (>= 3.0.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.1.0.0)
+    bootstrap-sass (2.2.2.0)
+      sass (~> 3.2)
     bourbon (3.0.1)
       sass (>= 3.2.0)
       thor
@@ -201,7 +202,7 @@ DEPENDENCIES
   activeadmin
   annotate
   bcrypt-ruby (~> 3.0.0)
-  bootstrap-sass (= 2.1)
+  bootstrap-sass (= 2.2.2.0)
   capybara (= 1.1.2)
   coffee-rails (~> 3.2.1)
   factory_girl_rails (= 4.1.0)
