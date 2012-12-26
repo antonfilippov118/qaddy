@@ -1,8 +1,10 @@
 Qaddy::Application.routes.draw do
+  
   ActiveAdmin.routes(self)
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :password_resets
 
   # static_pages
   # match '/newhome', to: 'static_pages#index'
@@ -23,6 +25,8 @@ Qaddy::Application.routes.draw do
   # root :to => "launchrock#index"
   # match '/launch', to: 'launchrock#launch', via: :get
 
+
+  #########################
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

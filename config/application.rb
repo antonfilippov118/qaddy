@@ -55,5 +55,23 @@ module Qaddy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # mailer options
+    ActionMailer::Base.default(from: "noreply@getqaddy.com")
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
+    # config.action_mailer.delivery_method = :sendmail    
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.sendgrid.net",
+      :port                 => 587,
+      :domain               => 'getqaddy.com',
+      :user_name            => 'abmail',
+      :password             => 'MuguitosLindos.mail',
+      :authentication       => 'plain',
+      :enable_starttls_auto => true
+    }
+
+
   end
 end
