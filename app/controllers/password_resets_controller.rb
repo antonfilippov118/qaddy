@@ -21,7 +21,8 @@ class PasswordResetsController < ApplicationController
     else
       @user.password_reset_sent_at = 30.days.ago
       if @user.update_attributes(params[:user])
-        redirect_to signin_url, flash: { success: "Password has been reset!" }
+        sign_in @user
+        redirect_to @user, flash: { success: "Password has been reset!" }
       else
         render :edit
       end

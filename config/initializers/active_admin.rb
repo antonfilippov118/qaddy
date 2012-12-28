@@ -1,5 +1,12 @@
 ActiveAdmin.setup do |config|
 
+  # == Load directories
+  #
+  config.load_paths = [
+    File.expand_path('app/active_admin/admin', Rails.root), 
+    File.expand_path('app/active_admin/retailer', Rails.root)
+  ]
+
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -46,6 +53,15 @@ ActiveAdmin.setup do |config|
   #
   # This will ONLY change the title for the admin section. Other
   # namespaces will continue to use the main "site_title" configuration.
+  config.default_namespace = :admin
+
+  config.namespace :admin do |admin|
+    admin.site_title = "Qaddy Admin Portal"
+  end
+
+  config.namespace :retailer do |retailer|
+    retailer.site_title = "Qaddy Retailer Portal"
+  end
 
   # == User Authentication
   #
@@ -112,7 +128,9 @@ ActiveAdmin.setup do |config|
   #   config.namespace :without_comments do |without_comments|
   #     without_comments.allow_comments = false
   #   end
-
+  config.namespace :retailer do |retailer|
+    retailer.allow_comments = false
+  end
 
   # == Batch Actions
   #

@@ -6,4 +6,5 @@
   <span class="muted"><%= @user.email %></span>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+<%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+<%= link_to 'Change Password', change_password_path(@user), method: :post, class: "btn btn-primary" %>

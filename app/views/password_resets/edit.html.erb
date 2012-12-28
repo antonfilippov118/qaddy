@@ -17,7 +17,13 @@
       
     <% end %>
 
-    <p>Return to <%= link_to "sign in", signin_path %> page</p>
+    <p>Return to
+      <% if signed_in? %>
+        <%= link_to "profile", current_user %> 
+      <% else %>
+        <%= link_to "sign in", signin_path %> 
+      <% end %>
+    page</p>
 
   </div>
 </div>    

@@ -40,6 +40,7 @@ gem 'bootstrap-sass', '2.2.2.0'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'faker', '1.0.1'
 gem 'activeadmin'
+gem 'hirb'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

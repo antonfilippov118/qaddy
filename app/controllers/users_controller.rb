@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :destroy]
-  before_filter :correct_user, only: [:show, :edit, :update]
+  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :change_password]
+  before_filter :correct_user, only: [:show, :edit, :update, :change_password]
   before_filter :admin_user, only: [:index, :destroy]
 
   # GET /users
@@ -64,6 +64,7 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     respond_to do |format|
+
       if @user.update_attributes(params[:user])
         flash[:success] = "Profile updated"
         format.html do
@@ -91,6 +92,12 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /change_password
+  def change_password
+    # TODO: prepare password_reset key and redirect to the correct page
+    @user.create_password_reset
+    redirect_to edit_password_reset_url(@user.password_reset_token)
+  end
   
   private
 
