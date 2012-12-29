@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :no_password
   attr_accessor :no_password
 
+  has_many :webstores
+
   has_secure_password
 
   before_save { self.email.downcase! }
