@@ -1,7 +1,7 @@
 ActiveAdmin.register Webstore do
   config.sort_order = "name_asc"
 
-  filter :user, collection: proc { User.find(:all, order: "LOWER(name) asc") }
+  filter :user, collection: User.order("LOWER(name) asc")
   filter :name
   filter :url
   filter :description
@@ -20,7 +20,8 @@ ActiveAdmin.register Webstore do
 
   form do |f|
     f.inputs do
-      f.input :user, collection: User.find(:all, order: "LOWER(name) asc").map{ |user| [user.name, user.id] }
+      # f.input :user, collection: User.find(:all, order: "LOWER(name) asc").map{ |user| [user.name, user.id] }
+      f.input :user, collection: User.order("LOWER(name) asc").map{ |user| [user.name, user.id] }
       f.input :name
       f.input :url
       f.input :description

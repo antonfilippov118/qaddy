@@ -3,8 +3,7 @@ ActiveAdmin.setup do |config|
   # == Load directories
   #
   config.load_paths = [
-    File.expand_path('app/active_admin/admin', Rails.root), 
-    File.expand_path('app/active_admin/retailer', Rails.root)
+    File.expand_path('app/active_admin', Rails.root)
   ]
 
   # == Site Title
