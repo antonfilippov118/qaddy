@@ -11,7 +11,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Qaddy - Admin"
+  config.site_title = "Qaddy"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -70,8 +70,15 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  config.authentication_method = :authenticate_admin_user!
+  # config.authentication_method = :authenticate_admin_user!
   # config.authentication_method = false
+  config.namespace :admin do |admin|
+    admin.authentication_method = :authenticate_admin_user!
+  end
+
+  config.namespace :retailer do |retailer|
+    retailer.authentication_method = :authenticate_regular_user!
+  end
 
 
   # == Current User
@@ -81,8 +88,15 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # to return the currently logged in user.
-  config.current_user_method = :current_admin_user
+  # config.current_user_method = :current_admin_user
   # config.current_user_method = false
+  config.namespace :admin do |admin|
+    admin.current_user_method = :current_admin_user
+  end
+
+  config.namespace :retailer do |retailer|
+    retailer.current_user_method = :current_regular_user
+  end
 
 
   # == Logging Out

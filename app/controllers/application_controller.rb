@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
+  def authenticate_regular_user!
+    redirect_to signin_url and return if !signed_in?
+  end
+  
+  def current_regular_user
+    current_user
+  end
+
 end
