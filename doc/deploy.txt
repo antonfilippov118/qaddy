@@ -1,0 +1,8 @@
+ENV VARS:
+
+  DATABASE_URL (for Heroku)
+  SENDGRID_USERNAME (sendgrid smtp relay username)
+  SENDGRID_PASSWORD (sendgrid smtp relay password)
+
+===========
+

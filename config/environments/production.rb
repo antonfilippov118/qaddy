@@ -26,6 +26,9 @@ Qaddy::Application.configure do
   # default app host for mailer
   config.action_mailer.default_url_options = { host: "staging.getqaddy.com" }
 
+  # perform email deliveries
+  config.action_mailer.perform_deliveries = true
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
