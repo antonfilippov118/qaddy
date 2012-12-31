@@ -47,6 +47,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        ApiKey.create! enabled: true, user: @user
         flash[:success] = "Welcome to Qaddy, #{@user.name}!"
         format.html do
           sign_in @user

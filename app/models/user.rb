@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_accessor :no_password
 
   has_many :webstores
+  has_one :api_key
 
   has_secure_password
 

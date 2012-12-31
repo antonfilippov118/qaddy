@@ -1,5 +1,7 @@
 class Webstore < ActiveRecord::Base
   belongs_to :user
+  has_many :orders
+  
   attr_accessible :description, :name, :url, :user_id
 
   validates_presence_of :user

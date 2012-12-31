@@ -22,6 +22,16 @@ Qaddy::Application.routes.draw do
   # root for staging
   root :to => "static_pages#index"
 
+  # API routes
+  namespace :api do
+    namespace :v1 do
+      resources :webstores do
+        resources :orders
+      end
+    end
+  end
+
+
   # root for production
   # root :to => "launchrock#index"
   # match '/launch', to: 'launchrock#launch', via: :get
