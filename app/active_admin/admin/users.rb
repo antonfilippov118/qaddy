@@ -18,8 +18,6 @@ ActiveAdmin.register User do
     column :email
     column("Admin", sortable: :admin) { |user| status_tag("Admin", :ok) unless !user.admin? }
     column :created_at
-    # column :updated_at
-    # default_actions
   end
 
   show do |user|
@@ -41,16 +39,17 @@ ActiveAdmin.register User do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs do
       f.input :name
       f.input :email
-      f.input :no_password, as: :hidden, value: "1"
+      f.input :no_password, as: :hidden, input_html: { value: "1" }
       # f.input :password
       # f.input :password_confirmation
       # probably need to create a custom action here to avoid mass-assign error
       # f.input :admin
     end
-    f.buttons
+    f.actions
   end
 
 end

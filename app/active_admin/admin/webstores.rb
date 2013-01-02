@@ -19,14 +19,14 @@ ActiveAdmin.register Webstore do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs do
-      # f.input :user, collection: User.find(:all, order: "LOWER(name) asc").map{ |user| [user.name, user.id] }
       f.input :user, collection: User.order("LOWER(name) asc").map{ |user| [user.name, user.id] }
       f.input :name
       f.input :url
       f.input :description
     end
-    f.buttons
+    f.actions
   end
 
 

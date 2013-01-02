@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  before_validation :check_empty_digest
   before_save { self.email.downcase! }
   before_save :create_remember_token, unless: :no_password
 
@@ -56,5 +57,18 @@ class User < ActiveRecord::Base
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
+
+    # This is for case when creating new user without password (e.g. from Admin)
+    def check_empty_digest
+      logger.debug("check_empty_digest")
+      if self.no_password.is_a?(TrueClass) || self.no_password == "1" 
+        if self.password.to_s.empty? && self.password_confirmation.to_s.empty? && self.password_digest.to_s.empty?
+          self.password = SecureRandom.urlsafe_base64
+          self.password_confirmation = self.password
+          create_remember_token
+        end
+      end
+    end
+
 
 end

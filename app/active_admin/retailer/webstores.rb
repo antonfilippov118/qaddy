@@ -30,12 +30,13 @@ ActiveAdmin.register Webstore, namespace: :retailer do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs do
       f.input :name
       f.input :url
       f.input :description
     end
-    f.buttons
+    f.actions
   end
 
 end

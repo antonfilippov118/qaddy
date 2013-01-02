@@ -95,7 +95,6 @@ class UsersController < ApplicationController
 
   # POST /change_password
   def change_password
-    # TODO: prepare password_reset key and redirect to the correct page
     @user.create_password_reset
     redirect_to edit_password_reset_url(@user.password_reset_token)
   end
