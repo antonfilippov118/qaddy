@@ -35,12 +35,13 @@ group :assets do
 end
 
 gem 'jquery-rails'
-# gem 'bootstrap-sass', '2.1'
 gem 'bootstrap-sass', '2.2.2.0'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'faker', '1.0.1'
 gem 'activeadmin'
 gem 'hirb'
+gem 'rest-client'
+gem 'qaddy-client', '~> 0.0.4'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

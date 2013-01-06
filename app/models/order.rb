@@ -5,7 +5,6 @@ class Order < ActiveRecord::Base
 
   attr_accessible :customer_email
   attr_accessible :customer_name
-  attr_accessible :default_sharing_text
   attr_accessible :discount_code_perc
   attr_accessible :number
   attr_accessible :send_email_after_hours

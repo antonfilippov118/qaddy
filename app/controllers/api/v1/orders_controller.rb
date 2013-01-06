@@ -8,7 +8,6 @@ module Api
       end
 
       def create
-
         begin
           @order = @webstore.orders.build(params[:order])
           @order.save!
