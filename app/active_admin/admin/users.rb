@@ -46,10 +46,6 @@ ActiveAdmin.register User do
       f.input :name
       f.input :email
       f.input :no_password, as: :hidden, input_html: { value: "1" }
-      # f.input :password
-      # f.input :password_confirmation
-      # probably need to create a custom action here to avoid mass-assign error
-      # f.input :admin
     end
     f.actions
   end

@@ -3,6 +3,8 @@ ActiveAdmin.register Order do
 
   config.sort_order = "created_at_desc"
 
+  actions :all, :except => :new
+
   # Customize filters
   filter :webstore, collection: Webstore.order("LOWER(name) asc")
   filter :number
@@ -13,6 +15,7 @@ ActiveAdmin.register Order do
   filter :discount_code_perc
   filter :created_at
   filter :updated_at
+
 
   # Customize index screen
   index do

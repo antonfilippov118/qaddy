@@ -3,7 +3,13 @@ class ApiKey < ActiveRecord::Base
   attr_accessible :enabled, :key, :user
 
   before_create :generate_key
+
+  validates_uniqueness_of :user_id  
+  validates_presence_of :user
   
+  scope :enabled, where(enabled: true)
+  scope :disabled, where(enabled: false)
+
   private
   
     def generate_key
