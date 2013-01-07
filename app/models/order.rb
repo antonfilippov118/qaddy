@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :webstore
-  has_many :order_items, before_add: :set_nested
-  accepts_nested_attributes_for :order_items
+  has_many :order_items, dependent: :destroy, before_add: :set_nested
+  accepts_nested_attributes_for :order_items, :allow_destroy => true
 
   attr_accessible :customer_email
   attr_accessible :customer_name
@@ -19,6 +19,10 @@ class Order < ActiveRecord::Base
   validates_presence_of :number, uniqueness: { scope: :webstore, case_sensitive: false }
   validates_presence_of :total
   validates_presence_of :webstore
+
+  def display_name
+    self.number
+  end
 
   private
 

@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  menu :priority => 2
+
   config.sort_order = "created_at_desc"
 
   filter :name

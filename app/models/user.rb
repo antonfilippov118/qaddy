@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :no_password
   attr_accessor :no_password
 
-  has_many :webstores
-  has_one :api_key
+  has_many :webstores, dependent: :destroy
+  has_one :api_key, dependent: :destroy
 
   has_secure_password
 

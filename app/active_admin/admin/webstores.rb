@@ -1,4 +1,6 @@
 ActiveAdmin.register Webstore do
+  menu :priority => 3
+
   config.sort_order = "name_asc"
 
   filter :user, collection: User.order("LOWER(name) asc")
