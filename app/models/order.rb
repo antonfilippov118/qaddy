@@ -11,6 +11,7 @@ class Order < ActiveRecord::Base
   attr_accessible :send_email_at
   attr_accessible :total
   attr_accessible :order_items_attributes
+  attr_accessible :internal_comment
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

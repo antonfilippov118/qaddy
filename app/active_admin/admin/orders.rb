@@ -13,6 +13,7 @@ ActiveAdmin.register Order do
   filter :customer_name
   filter :send_email_at
   filter :discount_code_perc
+  filter :internal_comment
   filter :created_at
   filter :updated_at
 
@@ -44,6 +45,7 @@ ActiveAdmin.register Order do
       row :send_email_after_hours
       row :send_email_at
       row :discount_code_perc
+      row :internal_comment
       row :created_at
       row :updated_at
     end
@@ -76,6 +78,7 @@ ActiveAdmin.register Order do
       f.input :send_email_after_hours
       f.input :send_email_at
       f.input :discount_code_perc
+      f.input :internal_comment
     end
 
     f.has_many :order_items do |oi_f|

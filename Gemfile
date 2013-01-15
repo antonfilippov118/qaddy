@@ -41,7 +41,7 @@ gem 'faker', '1.0.1'
 gem 'activeadmin'
 gem 'hirb'
 gem 'rest-client'
-gem 'qaddy-client', '~> 0.0.4'
+gem 'qaddy-client', '~> 0.0.5'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
