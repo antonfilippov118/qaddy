@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   before_validation :check_empty_digest
   before_save { self.email.downcase! }
   before_save :create_remember_token, unless: :no_password
+  after_create :create_api_key
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
@@ -70,5 +71,8 @@ class User < ActiveRecord::Base
       end
     end
 
+    def create_api_key
+      ApiKey.create!(enabled: true, user: self)
+    end
 
 end
