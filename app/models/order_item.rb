@@ -10,7 +10,7 @@ class OrderItem < ActiveRecord::Base
   attr_accessible :page_url
   attr_accessible :qty
   attr_accessible :total
-  attr_accessible :product_image # downloaded product image from image_url
+  attr_accessible :product_image # paperclip attachment, downloaded product image from image_url
 
   has_attached_file :product_image, 
     styles: { thumb: '100x100>', small: '200x200>', medium: '300x300>', big: '500x500>' },

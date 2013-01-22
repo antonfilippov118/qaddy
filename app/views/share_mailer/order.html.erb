@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body marginwidth="0" marginheight="0" style="margin:0;padding:0;background-color:#dee0e2">
+
+	<div marginwidth="0" marginheight="0" style="margin:0;padding:0;background-color:#dee0e2">
+		<center>
+			<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="border-collapse:collapse;margin:0;padding:0;background-color:#dee0e2;min-height:100%!important;width:100%!important">
+				<tbody>
+					<tr>
+						<td align="center" valign="top" style="border-collapse:collapse;margin:0;padding:20px;border-top:0;min-height:100%!important;width:100%!important">
+							<table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;border:1px solid #bbbbbb">
+								<tbody>
+									<tr>
+										<td align="center" valign="top" style="border-collapse:collapse">
+											<table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
+												<tbody>
+													<tr>
+														<td valign="top" style="padding-top:10px;padding-bottom:2px;border-collapse:collapse;color:#808080;font-family:Helvetica;font-size:10px;text-align:center">
+															Información adicional sobre tu compra en <strong><%= @order.webstore.name %></strong>:
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="top" style="border-collapse:collapse">
+											<table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
+												<tbody>
+													<tr>
+														<td valign="top" style="border-collapse:collapse">
+															<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
+																<tbody>
+																	<tr>
+																		<td valign="top" style="padding:9px;border-collapse:collapse">
+																			<table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse">
+																				<tbody>
+																					<tr>
+																						<td valign="top" align="center" style="padding-right:9px;padding-left:9px;padding-top:0;padding-bottom:0;border-collapse:collapse">
+																								<% if (@email_banner) %>
+																									<%= image_tag(attachments["banner#{File.extname(@email_banner.banner_file_name)}"].url, width:560) %>
+																								<% else %>
+																									<h1><%= @order.webstore.name %></h1>
+																								<% end %>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="top" style="border-collapse:collapse">
+											<table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
+												<tbody>
+													<tr>
+														<td valign="top" style="border-collapse:collapse">
+															<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
+																<tbody>
+																	<tr>
+																		<td valign="top" style="border-collapse:collapse">
+																			<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse">
+																				<tbody>
+																					<tr>
+																						<td valign="top" style="padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;border-collapse:collapse;color:#505050;font-family:Helvetica;font-size:14px;line-height:150%;text-align:left">
+																							<h1 style="display:block;font-family:Helvetica;font-size:26px;font-style:normal;font-weight:bold;line-height:100%;letter-spacing:normal;margin:0;text-align:left;color:#202020!important">Si te gustó nuestro producto, compártelo!</h1>
+																							<h3 style="display:block;font-family:Helvetica;font-size:16px;font-style:italic;font-weight:normal;line-height:100%;letter-spacing:normal;margin:0;text-align:left;color:#606060!important"></h3>
+																							<p>
+																								Comparte tu reciente compra en las redes sociales 
+																								<% if (@order.discount_code_perc.to_i > 0) %> 
+																									y obten un <%= @order.discount_code_perc.to_i %>% de descuento de en siguiente compra! El código de descuento te llegara a tu mail una vez hayas compartido el enlace.
+																								<% else %>
+																									!
+																								<% end %>
+																							</p>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
+																<tbody>
+																	<tr>
+																		<td style="padding-top:0;padding-right:18px;padding-bottom:18px;padding-left:18px;border-collapse:collapse" valign="top" align="center">
+																			<table border="0" cellpadding="0" cellspacing="0" width="" style="border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:5px;background-color:#007fff;border-collapse:collapse">
+																				<tbody>
+																					<tr>
+																						<td align="center" valign="middle" style="color:#ffffff;font-family:Arial;font-size:16px;padding:15px;border-collapse:collapse">
+																							<a title="Quiero compartir!" href="#" style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:initial;color:#ffffff;font-family:Arial;font-size:16px;padding:15px;word-wrap:break-word!important" target="_blank">
+																								<% if (@order.discount_code_perc.to_i > 0) %> 
+																									Quiero mi <%= @order.discount_code_perc.to_i %>% de descuento!
+																								<% else %>
+																									Quiero compartir!
+																								<% end %>
+																							</a>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
+																<tbody>
+																	<tr>
+																		<td style="padding:18px;border-collapse:collapse">
+																			<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-top-width:1px;border-top-style:solid;border-top-color:#999999;border-collapse:collapse">
+																				<tbody>
+																					<tr>
+																						<td style="border-collapse:collapse">
+																							<span></span>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
+																<tbody>
+																	<tr>
+																		<td valign="top" style="border-collapse:collapse">
+																			<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse">
+																				<tbody>
+																					<tr>
+																						<td valign="top" style="padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;border-collapse:collapse;color:#505050;font-family:Helvetica;font-size:14px;line-height:150%;text-align:left">
+																							<h1 style="text-align:center;display:block;font-family:Helvetica;font-size:26px;font-style:normal;font-weight:bold;line-height:100%;letter-spacing:normal;margin:0;color:#202020!important">Estos fueron los productos que compraste en Manga Corta</h1>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="top" style="border-collapse:collapse;background-color:#f4f4f4">
+
+											<% @order.order_items.each_with_index do |oi, index| %>
+												<div marginwidth="0" marginheight="0" style="margin:0 auto;padding:0;width:294px;display:inline-block;<% if (index % 2 == 0) %>clear:both;<% end %>">
+													<%= image_tag attachments["#{oi.id}#{File.extname(oi.product_image_file_name)}"].url %>
+													<br>
+													<%= oi.name %>
+												</div>
+											<% end %>
+
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="top" style="border-collapse:collapse">
+											<table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
+												<tbody>
+													<tr>
+														<td valign="top" style="border-collapse:collapse;color:#808080;font-family:Helvetica;font-size:10px;line-height:150%;padding-top:18px;padding-right:18px;padding-bottom:18px;padding-left:18px;text-align:left"> <em>Copyright © 2013 Manga Corta SpA, All rights reserved.</em>
+															<br>
+															Estás recibiendo este mail ya que te registraste en nuestro sitio web.
+															<br>
+															<br> <strong>Our mailing address is:</strong>
+															<br>
+															<div>
+																<span>Manga Corta SpA</span>
+																<div>
+																	<div>Encomenderos 253, of 12</div>
+																	<div>-</div>
+																	<span>Santiago</span>
+																	<span>8320000</span>
+																	<div>Chile</div>
+																	<br>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+
+	</div>
+</body>
+</html>
