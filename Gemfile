@@ -42,6 +42,10 @@ gem 'activeadmin'
 gem 'hirb'
 gem 'rest-client'
 gem 'qaddy-client', '~> 0.0.5'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'awesome_print'
+gem 'bitly'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

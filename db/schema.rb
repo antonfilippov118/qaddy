@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115011651) do
+ActiveRecord::Schema.define(:version => 20130121005752) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -39,16 +39,24 @@ ActiveRecord::Schema.define(:version => 20130115011651) do
   add_index "api_keys", ["user_id"], :name => "index_api_keys_on_user_id"
 
   create_table "order_items", :force => true do |t|
-    t.string   "page_url",             :null => false
-    t.string   "image_url",            :null => false
-    t.string   "name",                 :null => false
+    t.string   "page_url",                                  :null => false
+    t.string   "image_url",                                 :null => false
+    t.string   "name",                                      :null => false
     t.string   "description"
     t.string   "default_sharing_text"
     t.decimal  "total"
     t.integer  "qty"
-    t.integer  "order_id",             :null => false
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.integer  "order_id",                                  :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "product_image_file_name"
+    t.string   "product_image_content_type"
+    t.integer  "product_image_file_size"
+    t.datetime "product_image_updated_at"
+    t.string   "ref_code"
+    t.integer  "share_count",                :default => 0, :null => false
+    t.integer  "click_count",                :default => 0, :null => false
+    t.string   "short_url_clicked"
   end
 
   add_index "order_items", ["order_id"], :name => "index_order_items_on_order_id"
@@ -65,6 +73,12 @@ ActiveRecord::Schema.define(:version => 20130115011651) do
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
     t.text     "internal_comment"
+    t.string   "ref_code"
+    t.integer  "email_sent_count",       :default => 0, :null => false
+    t.datetime "email_last_sent_at"
+    t.integer  "email_read_count",       :default => 0, :null => false
+    t.string   "short_url_emailview"
+    t.string   "short_url_doshare"
   end
 
   add_index "orders", ["number", "webstore_id"], :name => "index_orders_on_number_and_webstore_id", :unique => true

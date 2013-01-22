@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+  include QaddyHelpers
+
   belongs_to :webstore
   has_many :order_items, dependent: :destroy, before_add: :set_nested
   accepts_nested_attributes_for :order_items, :allow_destroy => true
@@ -13,6 +15,8 @@ class Order < ActiveRecord::Base
   attr_accessible :order_items_attributes
   attr_accessible :internal_comment
 
+  before_create :generate_ref_code
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :customer_email, presence: true, format: { with: VALID_EMAIL_REGEX }, length: { maximum: 200 }
@@ -23,6 +27,26 @@ class Order < ActiveRecord::Base
 
   def display_name
     self.number
+  end
+
+  def generate_ref_code
+    begin
+      self.ref_code = SecureRandom.urlsafe_base64
+    end while Order.exists?(ref_code: self.ref_code)
+  end
+
+  def generate_short_url_emailview
+    set_default_url_options
+    bitly = get_bitly_client
+    url = Rails.application.routes.url_helpers.share_emailview_url(self.ref_code)
+    self.short_url_emailview = bitly.shorten(url).short_url
+  end
+
+  def generate_short_url_doshare
+    set_default_url_options
+    bitly = get_bitly_client
+    url = Rails.application.routes.url_helpers.share_doshare_url(self.ref_code)
+    self.short_url_doshare = bitly.shorten(url).short_url
   end
 
   private

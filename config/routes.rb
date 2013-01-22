@@ -19,6 +19,11 @@ Qaddy::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/users/:id/change_password', to: 'users#change_password', via: :post, as: :change_password
 
+  # share
+  match '/share/emailview/:ref_code', to: 'share#emailview', via: :get, as: :share_emailview
+  match '/share/doshare/:ref_code', to: 'share#doshare', via: :get, as: :share_doshare
+  match '/share/clicked/:ref_code', to: 'share#clicked', via: :get, as: :share_clicked
+
   # root for staging
   root :to => "static_pages#index"
 
