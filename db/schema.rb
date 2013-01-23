@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122220503) do
+ActiveRecord::Schema.define(:version => 20130123114921) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130122220503) do
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
+    t.text     "footer",              :default => "",    :null => false
   end
 
   add_index "email_banners", ["webstore_id"], :name => "index_email_banners_on_webstore_id"

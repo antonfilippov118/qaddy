@@ -4,6 +4,7 @@ class EmailBanner < ActiveRecord::Base
   attr_accessible :active
   attr_accessible :comment
   attr_accessible :banner # paperclip attachment
+  attr_accessible :footer
 
   has_attached_file :banner, 
     styles: { thumb: '200x100>', small: '360x180>', medium: '560x280>', big: '780x390>' },

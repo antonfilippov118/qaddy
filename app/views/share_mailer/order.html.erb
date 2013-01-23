@@ -139,7 +139,7 @@
 																				<tbody>
 																					<tr>
 																						<td valign="top" style="padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;border-collapse:collapse;color:#505050;font-family:Helvetica;font-size:14px;line-height:150%;text-align:left">
-																							<h1 style="text-align:center;display:block;font-family:Helvetica;font-size:26px;font-style:normal;font-weight:bold;line-height:100%;letter-spacing:normal;margin:0;color:#202020!important">Estos fueron los productos que compraste en Manga Corta</h1>
+																							<h1 style="text-align:center;display:block;font-family:Helvetica;font-size:26px;font-style:normal;font-weight:bold;line-height:100%;letter-spacing:normal;margin:0;color:#202020!important">Estos fueron los productos que compraste en <%= @order.webstore.name %></h1>
 																						</td>
 																					</tr>
 																				</tbody>
@@ -169,26 +169,30 @@
 									</tr>
 									<tr>
 										<td align="center" valign="top" style="border-collapse:collapse">
+
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;background-color:#f4f4f4">
+												<tbody>
+													<tr>
+														<td style="padding:18px;border-collapse:collapse">
+															<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-top-width:1px;border-top-style:solid;border-top-color:#999999;border-collapse:collapse">
+																<tbody>
+																	<tr>
+																		<td style="border-collapse:collapse">
+																			<span></span>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
 											<table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
 												<tbody>
 													<tr>
-														<td valign="top" style="border-collapse:collapse;color:#808080;font-family:Helvetica;font-size:10px;line-height:150%;padding-top:18px;padding-right:18px;padding-bottom:18px;padding-left:18px;text-align:left"> <em>Copyright © 2013 Manga Corta SpA, All rights reserved.</em>
-															<br>
-															Estás recibiendo este mail ya que te registraste en nuestro sitio web.
-															<br>
-															<br> <strong>Our mailing address is:</strong>
-															<br>
-															<div>
-																<span>Manga Corta SpA</span>
-																<div>
-																	<div>Encomenderos 253, of 12</div>
-																	<div>-</div>
-																	<span>Santiago</span>
-																	<span>8320000</span>
-																	<div>Chile</div>
-																	<br>
-																</div>
-															</div>
+														<td valign="top" style="border-collapse:collapse;color:#808080;font-family:Helvetica;font-size:10px;line-height:150%;padding-top:18px;padding-right:18px;padding-bottom:18px;padding-left:18px;text-align:left"> 
+															<%= sanitize @email_banner.footer, tags: %w(em br div span b strong) %>
 														</td>
 													</tr>
 												</tbody>
