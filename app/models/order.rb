@@ -16,6 +16,7 @@ class Order < ActiveRecord::Base
   attr_accessible :internal_comment
 
   before_create :generate_ref_code
+  before_create :generate_send_email_at
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -53,6 +54,12 @@ class Order < ActiveRecord::Base
 
     def set_nested(order_item)
       order_item.order ||= self
+    end
+
+    def generate_send_email_at
+      if (self.send_email_at.nil?)
+        self.send_email_at = DateTime.now.advance(hours: self.send_email_after_hours)
+      end
     end
 
 end

@@ -1,6 +1,6 @@
 class ShareMailer < ActionMailer::Base
 
-  def order(order)
+  def order(order, email_destination = nil)
     @order = order
     @email_banner = order.webstore.email_banners.where(active: true).first
 
@@ -14,7 +14,8 @@ class ShareMailer < ActionMailer::Base
       attachments.inline["#{oi.id}#{File.extname(oi.product_image_file_name)}"] = File.read(att.path)
     end
 
-    mail(to: order.customer_email, subject: "Tu compra en #{order.webstore.name}")
+    email_destination ||= order.customer_email
+    mail(to: email_destination, subject: "Tu compra en #{order.webstore.name}")
   end
 
 end

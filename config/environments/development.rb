@@ -19,7 +19,7 @@ Qaddy::Application.configure do
   # perform email deliveries to the file (Rails.root/tmp/mail/ dir)
   # clear this folder before testing
   # all emails to the same destination will be written in the same email
-  # add .eml extension to the file to be able to actually view email (first one, if there are more than one written)
+  # add .eml extension to the file to be able to actually view the email (at least the first one if there are more than one written)
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :file
   config.action_mailer.file_settings = { location: Rails.root.join('tmp/mail') }
