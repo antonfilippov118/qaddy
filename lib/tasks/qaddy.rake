@@ -7,7 +7,7 @@ namespace :qaddy do
         oi.product_image_from_url(oi.image_url)
         oi.save!
       rescue => ex
-        logger.error("Error downloading product image: #{ex.message}")
+        Rails.logger.error("Error downloading product image: #{ex.message}")
       end
     end
   end
@@ -19,7 +19,7 @@ namespace :qaddy do
         o.generate_short_url_emailview
         o.save!
       rescue => ex
-        logger.error("Error generating email view short url: #{ex.message}")
+        Rails.logger.error("Error generating email view short url: #{ex.message}")
       end
     end
 
@@ -28,7 +28,7 @@ namespace :qaddy do
         o.generate_short_url_doshare
         o.save!
       rescue => ex
-        logger.error("Error generating do share short url: #{ex.message}")
+        Rails.logger.error("Error generating do share short url: #{ex.message}")
       end
     end
 
@@ -37,7 +37,7 @@ namespace :qaddy do
         oi.generate_short_url_clicked
         oi.save!
       rescue => ex
-        logger.error("Error generating clicked short url: #{ex.message}")
+        Rails.logger.error("Error generating clicked short url: #{ex.message}")
       end
     end
   end
@@ -72,7 +72,7 @@ namespace :qaddy do
           o.email_last_sent_at = DateTime.now
           o.save!
         rescue => ex
-          logger.error("Error sending an email: #{ex.message}")
+          Rails.logger.error("Error sending an email: #{ex.message}")
         end
       end
     end
