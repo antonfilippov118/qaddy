@@ -58,7 +58,7 @@ namespace :qaddy do
     orders.each do |o|
       complete = true
       o.order_items.each do |oi|
-        if oi.product_image.nil? || oi.short_url_clicked.nil?
+        if oi.product_image_file_name.nil? || oi.short_url_clicked.nil?
           complete = false
           break
         end
@@ -72,7 +72,7 @@ namespace :qaddy do
           o.email_last_sent_at = DateTime.now
           o.save!
         rescue => ex
-          Rails.logger.error("Error sending an email: #{ex.message}")
+          Rails.logger.error("Error sending an email: order_id:#{o.id} error:#{ex.message}")
         end
       end
     end
