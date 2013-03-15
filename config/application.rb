@@ -59,6 +59,15 @@ module Qaddy
     # prevent initializing application and connecting to the database
     config.assets.initialize_on_precompile = false
 
+    # See everything in the log (default is :info)
+    # config.log_level = :debug
+
+    # Prepend all log lines with the following tags
+    config.log_tags = [ :subdomain, :uuid ]
+
+    # Use a different logger for distributed setups
+    config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+
     # mailer options
     ActionMailer::Base.default(from: "noreply@getqaddy.com")
     config.action_mailer.raise_delivery_errors = true

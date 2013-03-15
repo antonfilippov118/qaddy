@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123114921) do
+ActiveRecord::Schema.define(:version => 20130315020311) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,6 +99,27 @@ ActiveRecord::Schema.define(:version => 20130123114921) do
   add_index "orders", ["number", "webstore_id"], :name => "index_orders_on_number_and_webstore_id", :unique => true
   add_index "orders", ["number"], :name => "index_orders_on_number"
   add_index "orders", ["webstore_id"], :name => "index_orders_on_webstore_id"
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "shares", :force => true do |t|
+    t.string   "platform"
+    t.text     "platform_user"
+    t.text     "publish_result"
+    t.integer  "order_item_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "shares", ["order_item_id"], :name => "index_shares_on_order_item_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

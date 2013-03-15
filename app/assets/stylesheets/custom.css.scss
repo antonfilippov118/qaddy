@@ -1,13 +1,13 @@
 @import "bootstrap";
-@import 'bootstrap-responsive';
+@import "bootstrap-responsive";
 
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -48,7 +48,7 @@ textarea {
   text-align: center;
   h1 {
     margin-bottom: 10px;
-  }  
+  }
 }
 
 /* typography */
@@ -94,7 +94,7 @@ p {
   &:hover {
     color: white;
     text-decoration: none;
-  }  
+  }
 }
 
 /* footer */
@@ -107,20 +107,20 @@ footer {
 
   a {
     color: $gray;
-    
-    &:hover { 
+
+    &:hover {
       color: $grayDarker;
-    }    
+    }
   }
 
   small {
     float: left;
-  }  
+  }
 
   ul {
     float: right;
     list-style: none;
-    
+
     li {
       float: left;
       margin-left: 10px;
@@ -154,4 +154,3 @@ input {
   @extend .control-group;
   @extend .error;
  }
- 

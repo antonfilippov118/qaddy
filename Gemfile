@@ -18,8 +18,9 @@ group :test do
 end
 
 group :production do
+  #ruby "1.9.3"
   gem 'pg'
-  gem 'newrelic_rpm'  
+  gem 'newrelic_rpm'
 end
 
 # Gems used only for assets and not required
@@ -34,6 +35,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'unicorn'
+gem 'rack-timeout'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '2.2.2.0'
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -46,6 +49,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'awesome_print'
 gem 'bitly'
+gem 'koala'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

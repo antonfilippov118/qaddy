@@ -1,0 +1,19 @@
+<div class="row-fluid">
+	<div class="span4 center">
+		<%= image_tag share_order_item_image_url(order_item.ref_code), class: "img-polaroid", style: "width:80%; max-width:200px;" %><br>
+	</div>
+	<div class="span8">
+		<div class="product-name">
+			<%= order_item.name %>
+		</div>
+		<%= form_tag(share_publish_path, remote: true, :'data-type' => 'json', class: 'shareform') do %>
+	        <%= text_area_tag 'comment', order_item.default_sharing_text, class: 'comment' %>
+		    <%= hidden_field_tag 'item_ref_code', order_item.ref_code %>
+		    <br>
+		    <%= submit_tag "Login to share", class: "sharebtn btn btn-qaddy btn-large pull-right disabled", disabled: 'disabled', data: { logintext: "Login to share", sharetext: "SHARE IT!", sharingtext: "Sharing...",  sharedtext: "Shared!", isshared: false } %>
+		<% end %>
+	</div>
+</div>
+
+
+<div class="lineBr"></div>

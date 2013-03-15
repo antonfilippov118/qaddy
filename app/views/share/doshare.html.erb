@@ -1,0 +1,104 @@
+<% provide(:title, "Share Your Recent Purchase!") %>
+
+<div class="row">
+    <div class="span6 offset3">
+        <div id="sharing-logo" class="center">
+            <%= image_tag("qaddy_logo-200.png", alt: "Qaddy Logo" ) %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span8 offset2">
+
+        <div id="sharing-container">
+
+            <div class="row-fluid">
+                <div class="span10 offset1">
+                    <h3>Share Your Recent Purchase!</h3>
+                    <h4>Here you have the products you've purchased and you can share them with your friends</h4>
+                </div>
+            </div>
+
+            <div class="lineBr"></div>
+
+            <% if @success %>
+                <div class="success-box">
+                    <p>Se ha compartido tu compra exitosamente!!!</p>
+                </div>
+            <% else %>
+                <% if @order.nil? %>
+                    <div class="error-box">
+                        <p>Link no existe</p>
+                    </div>
+                <% else %>
+
+                    <div class="row-fluid">
+                        <div class="span6 offset3">
+                            <button type="button" class="btn btn-large btn-block" data-toggle="modal" data-target="#aboutAppModal" data-backdrop="true" data-keyboard="false">About the App</button>
+                            <br>
+                        </div>
+                    </div>
+
+
+                    <div class="row-fluid">
+                        <div class="span6 offset3">
+
+                            <!-- FB login/out button -->
+                            <div>
+                                <p><button id="login" class="btn btn-primary btn-large btn-block disabled" disabled onClick="authUser();" data-logintext="Login with Facebook" data-logouttext="Logout">Checking Facebook status...</button></p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- About the App modal -->
+                    <div id="aboutAppModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutAppModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="aboutAppModalLabel">About the App</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Application currently in <strong>Beta</strong></p>
+                            <p>This application is to share the happiness you feel upon receiving your favorite shirt.
+                            The application will ask you to accept Facebook permissions. Do not worry, the data will
+                            be used solely for sharing purposes and the application is governed by the terms and
+                            conditions of MangaCorta.cl</p>
+                            <p><a class="terminos" href="http://mangacorta.cl/assets/Terminos%20y%20Condiciones.pdf" target="_blank">See Terms and Conditions</a>
+                            <p>We hope you like it!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        </div>
+                    </div>
+
+                    <!-- Success modal -->
+                    <div id="successModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="successModalLabel">Thank You!</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thank you for sharing with your friends! Please allow up to one hour and you should receive an email from us with a
+                                discount code which you can redeem on your next purchase or give to your friend!</p>
+                            <p>Keep sharing your favorite items!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        </div>
+                    </div>
+
+                    <div class="lineBr"></div>
+
+                    <%= render partial: "order_item", collection: @order.order_items %>
+
+                <% end %>
+            <% end %>
+
+        </div>
+
+    </div>
+</div>
+
+<%= image_tag("bg_image-share-2000.jpg", alt: "background", title: "", id: "background" ) %>
+
