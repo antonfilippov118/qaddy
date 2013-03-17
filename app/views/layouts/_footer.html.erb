@@ -1,12 +1,17 @@
-<footer class="footer">
-  <small>
-    <%= link_to "Qaddy", root_path %> &copy; <%= Date::today.year %>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About", '#' %></li>
-      <li><%= link_to "Contact", '#' %></li>
-      <li><%= link_to "News", '#' %></li>
-    </ul>
-  </nav>
+<!-- start FOOTER -->
+<footer class="footer" id="footer">
+  <div class="container introFooter">
+    <div>
+      <%= image_tag("qaddy_logo_small.png", alt: "Qaddy Logo", title: "Qaddy Logo") %>
+    </div>
+    <h2>Now you've seen how easy this is</h2>
+    <h4>Be a part of Qaddy and start increasing your sales!</h4>
+    <a href="#signupFormBtn" class="btn btn-large btn-qaddy slowscroll opensignupform">Sign up now</a>
+    <br>
+    <br>
+    <div class="lineBr"></div>
+    <p><strong>&copy;Copyright Qaddy <%= Date::today.year %>. All Rights Reserved.</strong>
+
+    If you need to contact us directly send an email to <a href="mailto:info@getqaddy.com"><i>info@getqaddy.com</i></a></p>
+  </div>
 </footer>

@@ -1,34 +1,24 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to image_tag("logo-qaddy2.png", alt: "Qaddy", size: "130x35", id: "logo"), root_path %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Help", '#' %></li>
+<header>
+  <div class="container">
+    <nav id="mainNav">
+      <div class="row">
 
-          <% if signed_in? %>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Retailer Portal", retailer_root_path %></li>
-                <% if current_user.admin? %>
-                  <li class="divider"></li>
-                  <li><%= link_to "Admin Portal", admin_root_path %></li>
-                <% end %>
-                <li class="divider"></li>
-                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
+        <div class="span5">
+          <div class="headerLogo">
+            <%= image_tag("qaddy_logo.png", alt: "Qaddy Logo", title: "Qaddy Logo") %>
+          </div>
+        </div>
+
+        <div class="span7">
+          <ul>
+            <li><a href="#contentIntroduction" class="slowscroll">How it Works</a></li>
+            <li><a href="#footer" class="slowscroll">Contact</a></li>
+            <br class="clear" />
+          </ul>
+        </div>
+
+      </div>
+    </nav><!-- /#mainNav -->
   </div>
 </header>
 

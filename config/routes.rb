@@ -1,5 +1,5 @@
 Qaddy::Application.routes.draw do
-  
+
   ActiveAdmin.routes(self)
 
   resources :users
@@ -7,14 +7,14 @@ Qaddy::Application.routes.draw do
   resources :password_resets
 
   # static_pages
-  # match '/newhome', to: 'static_pages#index'
+  match '/oldhome', to: 'static_pages#index'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
   match '/help',    to: 'static_pages#help'
   match '/news',    to: 'static_pages#news'
 
   # users / sessions
-  match '/signup',                    to: 'users#new'
+  # match '/signup',                    to: 'users#new'
   match '/signin',                    to: 'sessions#new'
   match '/signout',                   to: 'sessions#destroy',      via: :delete
   match '/users/:id/change_password', to: 'users#change_password', via: :post, as: :change_password
@@ -27,8 +27,12 @@ Qaddy::Application.routes.draw do
   match '/share/order_item_image/:ref_code', to: 'share#order_item_image',   via: :get,  as: :share_order_item_image
   match '/share/publish',                    to: 'share#publish',            via: :post, as: :share_publish
 
+  # landing signup
+  match '/signup',                    to: 'static_pages#signup',             via: :post, as: :landing_signup
+
   # root for staging
-  root :to => "static_pages#index"
+  # root :to => "static_pages#index"
+  root :to => "static_pages#landing"
 
   # API routes
   namespace :api do

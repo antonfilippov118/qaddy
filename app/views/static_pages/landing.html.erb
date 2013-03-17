@@ -1,0 +1,170 @@
+<%= provide(:title, "Qaddy") %>
+
+
+<section class="introduction">
+    <h2>Attract new online traffic</h2>
+    <br />
+    <h2>in a cost-efficient way</h2>
+    <br />
+    <br />
+
+    <!-- <a href="#" class="btn btn-large btn-qaddy">Sign up now</a> -->
+    <button type="button" class="btn btn-large btn-qaddy" data-toggle="collapse" data-target="#signupFormContainer" id="signupFormBtn">
+      Sign up now
+    </button>
+
+    <div id="signupFormContainer" class="collapse">
+        <div class="row-fluid">
+                <div class="span4 offset4 well">
+
+                    <p>We're currently in <strong>private beta</strong>. Please leave us your data and we'll notify you the minute we open the doors!</p>
+
+                    <%= form_tag(landing_signup_path, remote: true, :'data-type' => 'json', class: 'signupform form well', id: 'signupform', novalidate: true) do %>
+                        <div class="control-group">
+                            <%= label_tag 'company', 'Company name' %>
+                            <div class="controls">
+                                <%= text_field_tag 'company', nil, class: 'span12', required: true, data: { :'validation-required-message' => "This field is required" } %>
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <%= label_tag 'name', 'Your name' %>
+                            <div class="controls controls-row">
+                                <%= text_field_tag 'first_name', nil, class: 'span6', placeholder: 'First name', required: true, data: { :'validation-required-message' => "This field is required" } %>
+                                <%= text_field_tag 'last_name', nil, class: 'span6', placeholder: 'Last name'  %>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <%= label_tag 'email', 'Email' %>
+                            <div class="controls">
+                                <%= text_field_tag 'email', nil, class: 'span12', required: true, type: 'email', data: { :'validation-required-message' => "This field is required", :'data-validation-email-message' => 'Invalid email address' } %>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <%= label_tag 'url', 'E-commerce website URL' %>
+                            <div class="controls">
+                                <%= text_field_tag 'url', nil, class: 'span12', required: true, data: { :'validation-required-message' => "This field is required" } %>
+                            </div>
+                        </div>
+
+                        <%= submit_tag "Send", class: "btn btn-primary btn-large", disable_with: 'Please wait...' %>
+
+                    <% end %>
+                </div>
+        </div>
+    </div>
+
+
+    <div class="line-break"></div>
+</section><!-- /.introduction -->
+
+<section class="presentation">
+    <div class="container">
+
+        <h4>The simplest way to quickly increase your sales<br />by making your customers refer their friends.</h4>
+
+        <div class="row-fluid">
+            <article class="span4 presInfo">
+                <%= image_tag("presInfo_icon-1.png", alt: "You Buy It", title: "You Buy It") %>
+                <h5>You Buy It</h5>
+                <p>Clients buy their favorite <br />stuff at your online store<br />in order to receive a code.</p>
+            </article>
+
+            <article class="span4 presInfo">
+                <%= image_tag("presInfo_icon-2.png", alt: "You Share It", title: "You Share It") %>
+                <h5>You Share It</h5>
+                <p>They share the recent purchase<br />with their friends at the<br />social network of their choice</p>
+            </article>
+
+            <article class="span4 presInfo">
+                <%= image_tag("presInfo_icon-3.png", alt: "You Benefit", title: "You Benefit") %>
+                <h5>You Benefit</h5>
+                <p>Finally they can receive<br />prizes, discounts, new stuff<br />and much more!</p>
+            </article>
+        </div>
+
+        <article class="scrollBottom">
+            <a href="#contentIntroduction" class="scrollArrow slowscroll" title="">Go to How it works</a>
+        </article>
+
+    </div>
+</section><!-- /.presentation -->
+
+
+<!-- start CONTAINER -->
+<section id="container">
+    <div class="container">
+
+        <article id="contentIntroduction" class="content contentIntro">
+            <h2>How Qaddy Works</h2>
+            <p>Qaddy solves the largest problem faced by e-retailers today:<br />How to attract new online traffic in a cost-efficient way.</p>
+            <div class="lineBr"></div>
+            <br class="clear" />
+        </article>
+
+        <div class="row-fluid">
+            <article class="content">
+                <h3><strong>Step 1:</strong> Clients purchase.</h3>
+
+                <div class="span5 offset1">
+                    <p>So the process starts like this: You click on the sign up button above, where you will have to fill a few simple fields. After this you will be ready to get the benefits our platform has to offer.</p>
+                    <p>Then, your clients will start visiting your store and spend some time on it. They take a look on a few products they might want to buy, to finally decide which of those products better fit their needs and purchase a number of them, which obviously they liked very much.</p>
+                </div>
+
+                <div class="span5">
+                    <%= image_tag("images_how-to-1.jpg", alt: "Step 1", title: "Step 1", class: "img-polaroid") %>
+                </div>
+
+                <div class="lineBr"></div>
+                <br class="clear" />
+            </article>
+        </div>
+
+
+         <div class="row-fluid">
+            <article class="content">
+                <h3><strong>Step 2:</strong> They get notified.</h3>
+
+                <div class="span5 offset1">
+                    <%= image_tag("images_how-to-2.jpg", alt: "Step 2", title: "Step 2", class: "img-polaroid") %>
+                </div>
+
+                <div class="span5">
+                    <p>You may think <i>"So what… Step 1 is obvious"</i>. Well, here comes the interesting part where <strong>Qaddy</strong> takes place.</p>
+                    <p>Customers who have purchased a product will receive an e-mail, notifying them of the purchase and getting a clickable link that they can use to refer their friends the products they have just acquired.</p>
+                    <p>If they finally do, you will be expanding the amount of people that visits your store, making them become potential clients.</p>
+                </div>
+
+                <div class="lineBr"></div>
+                <br class="clear" />
+            </article>
+        </div>
+
+        <div class="row-fluid">
+            <article class="content">
+                <h3><strong>Step 3:</strong> Clients refer their friends!</h3>
+
+                <div class="span5 offset1">
+                    <p>When they click the link on the notification e-mail, customers will be redirected to a page which contains the list of products they have purchased.</p>
+                    <p>Once in there, they will have to Login with their <strong>Facebook account</strong> in order to be able to refer.</p>
+                    <p>Each product on the list will have its proper name and picture. Then below a field where they can write anything they would like to add about the purchased product.</p>
+                </div>
+
+                <div class="span5">
+                    <%= image_tag("images_how-to-3.jpg", alt: "Step 3", title: "Step 3", class: "img-polaroid") %>
+                </div>
+
+                <br class="clear" />
+            </article>
+        </div>
+
+    </div>
+
+</section>
+
+<%= image_tag("bg_image-a.jpg", alt: "", title: "", id: "background") %>
+
+
