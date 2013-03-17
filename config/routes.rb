@@ -14,7 +14,7 @@ Qaddy::Application.routes.draw do
   match '/news',    to: 'static_pages#news'
 
   # users / sessions
-  # match '/signup',                    to: 'users#new'
+  match '/signup2',                   to: 'users#new',             as: :signup
   match '/signin',                    to: 'sessions#new'
   match '/signout',                   to: 'sessions#destroy',      via: :delete
   match '/users/:id/change_password', to: 'users#change_password', via: :post, as: :change_password

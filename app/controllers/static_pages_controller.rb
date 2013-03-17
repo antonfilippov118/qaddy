@@ -21,7 +21,7 @@ class StaticPagesController < ApplicationController
       last_name: params[:last_name],
       email: params[:email],
       url: params[:url],
-      ip_address: env['HTTP_X_REAL_IP'] ||= env['REMOTE_ADDR']
+      ip_address: request.headers['X_FORWARDED_FOR'] ||= env['REMOTE_ADDR']
     )
 
     if !signup.valid?
