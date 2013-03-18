@@ -99,7 +99,7 @@
                                         <tbody>
                                           <tr>
                                             <td align="center" valign="middle" style="color:#ffffff;font-family:Arial;font-size:16px;padding:15px;border-collapse:collapse">
-                                              <a title="Quiero compartir!" href="@order.short_url_doshare" style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:initial;color:#ffffff;font-family:Arial;font-size:16px;padding:15px;word-wrap:break-word!important" target="_blank">
+                                              <a title="Quiero compartir!" href="<%= @order.short_url_doshare %>" style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:initial;color:#ffffff;font-family:Arial;font-size:16px;padding:15px;word-wrap:break-word!important" target="_blank">
                                                 <% if (@order.discount_code_perc.to_i > 0) %>
                                                   Quiero mi <%= @order.discount_code_perc.to_i %>% de descuento!
                                                 <% else %>
