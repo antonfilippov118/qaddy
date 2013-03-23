@@ -6,12 +6,14 @@ Qaddy::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
 
+  # root for staging
+  root :to => "static_pages#landing"
+
   # static_pages
   match '/oldhome', to: 'static_pages#index'
-  match '/about',   to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'
-  match '/help',    to: 'static_pages#help'
-  match '/news',    to: 'static_pages#news'
+
+  # landing signup
+  match '/signup',                    to: 'static_pages#signup',             via: :post, as: :landing_signup
 
   # users / sessions
   match '/signup2',                   to: 'users#new',             as: :signup
@@ -27,13 +29,6 @@ Qaddy::Application.routes.draw do
   match '/share/order_item_image/:ref_code', to: 'share#order_item_image',   via: :get,  as: :share_order_item_image
   match '/share/publish',                    to: 'share#publish',            via: :post, as: :share_publish
 
-  # landing signup
-  match '/signup',                    to: 'static_pages#signup',             via: :post, as: :landing_signup
-
-  # root for staging
-  # root :to => "static_pages#index"
-  root :to => "static_pages#landing"
-
   # API routes
   namespace :api do
     namespace :v1 do
@@ -43,10 +38,6 @@ Qaddy::Application.routes.draw do
     end
   end
 
-
-  # root for production
-  # root :to => "launchrock#index"
-  # match '/launch', to: 'launchrock#launch', via: :get
 
 
   #########################
