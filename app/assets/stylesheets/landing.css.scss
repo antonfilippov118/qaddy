@@ -159,8 +159,9 @@ footer {padding: 30px 0 10px; border-top: 3px solid #793A09; background-color: #
 /* -------------------------------------
   Background image
 ------------------------------------- */
-/* Tablets */
 img#background {
+  display:inline;
+
   /* Set rules to fill background */
   min-height: 100%;
   min-width: 1024px;
@@ -176,7 +177,29 @@ img#background {
   z-index: -999999;
 }
 
+img#background2 {
+  display: none;
+
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 768px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -999999;
+}
+
+/* Tablets */
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img#background {display:inline;}
+  img#background2 {display:none;}
+
   img#background {margin-left: -512px; left: 50%;}
 
   #mainNav {background-position: 10px 10px;}
@@ -193,6 +216,10 @@ img#background {
 
 /* Mobiles (portrait & landscape) */
 @media screen and (max-width: 540px) {
+  img#background {display:none;}
+  img#background2 {display:inline;}
+  img#background2 {margin-left: -350px; left: 50%;}
+
   #mainNav {height: 120px; background-color: rgba(0, 0, 0, 0.5);}
   #mainNav .headerLogo {width: auto; margin: 0 auto; padding-top: 10px; float: none; display: block;}
   #mainNav .headerLogo img {margin: 0 auto; display: block;}
