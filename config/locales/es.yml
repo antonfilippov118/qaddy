@@ -9,7 +9,7 @@ es:
         email:          "E-mail"
         first_name:     "Nombre"
         last_name:      "Apellido"
-        url_name:       "Dirección del sitio web"
+        url:       "Dirección del sitio web"
 
     errors:
       messages:
