@@ -1,0 +1,18 @@
+# Sample localization file for Spanish. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+es:
+  activerecord:
+    attributes:
+      signup_beta:
+        company:        "Empresa"
+        email:          "E-mail"
+        first_name:     "Nombre"
+        last_name:      "Apellido"
+        url_name:       "Dirección del sitio web"
+
+    errors:
+      messages:
+        blank:          "no puede estar vacío"
+        invalid:        "no es válido"
+        too_long:       "es demasiado largo (máximo %{count} caracteres)"
