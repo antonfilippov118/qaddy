@@ -1,22 +1,22 @@
-<%= provide(:title, "Qaddy") %>
+<%= provide(:title, "Atrae nuevo tráfico online de forma económica y eficiente") %>
 
 
 <section class="introduction">
-    <h2>Attract new online traffic</h2>
+    <h2>Atrae nuevo tráfico online</h2>
     <br />
-    <h2>in a cost-efficient way</h2>
+    <h2>de forma económica y eficiente</h2>
     <br />
     <br />
 
     <button type="button" class="btn btn-large btn-qaddy" data-toggle="collapse" data-target="#signupFormContainer" id="signupFormBtn">
-      Sign up now
+      Inscríbete ahora
     </button>
 
     <div id="signupFormContainer" class="collapse">
         <div class="row-fluid">
                 <div class="span4 offset4 well">
 
-                    <p>We're currently in <strong>private beta</strong>. Please leave us your data and we'll notify you the minute we open the doors!</p>
+                    <p>Actualmente estamos en beta <strong>privado</strong>. Por favor déjenos sus datos y le notificaremos el momento en que abren las puertas!</p>
 
                     <%= simple_form_for SignupBeta.new, url: landing_signup_url, remote: true, validate: true, html: { class: 'signupform form well form-vertical', id: 'signupform', :'data-type' => 'json', novalidate: true } do |f| %>
 
@@ -31,7 +31,7 @@
                             <div class="errors"></div>
                         </div>
 
-                        <%= f.submit "Send", class: "btn btn-primary btn-large", disable_with: 'Please wait...' %>
+                        <%= f.submit "Enviar", class: "btn btn-primary btn-large", disable_with: 'Por favor, espere ...' %>
 
                     <% end %>
                 </div>
@@ -45,30 +45,30 @@
 <section class="presentation">
     <div class="container">
 
-        <h4>The simplest way to quickly increase your sales<br />by making your customers refer their friends.</h4>
+        <h4>La forma más sencilla para aumentar rápidamente tus ventas<br />haciendo que tus clientes compartan compras con sus amigos.</h4>
 
         <div class="row-fluid">
             <article class="span4 presInfo">
-                <%= image_tag("presInfo_icon-1.png", alt: "You Buy It", title: "You Buy It") %>
-                <h5>You Buy It</h5>
-                <p>Clients buy their favorite <br />stuff at your online store<br />in order to receive a code.</p>
+                <%= image_tag("presInfo_icon-1.png", alt: "Lo Compras", title: "Lo Compras") %>
+                <h5>Lo Compras</h5>
+                <p>Los clientes compran sus cosas favoritas en tu tienda online para recibir un código.</p>
             </article>
 
             <article class="span4 presInfo">
-                <%= image_tag("presInfo_icon-2.png", alt: "You Share It", title: "You Share It") %>
-                <h5>You Share It</h5>
-                <p>They share the recent purchase<br />with their friends at the<br />social network of their choice</p>
+                <%= image_tag("presInfo_icon-2.png", alt: "Lo Compartes", title: "Lo Compartes") %>
+                <h5>Lo Compartes</h5>
+                <p>Ellos comparten su compra reciente con sus amigos en la red social que ellos prefieran.</p>
             </article>
 
             <article class="span4 presInfo">
-                <%= image_tag("presInfo_icon-3.png", alt: "You Benefit", title: "You Benefit") %>
-                <h5>You Benefit</h5>
-                <p>Finally they can receive<br />prizes, discounts, new stuff<br />and much more!</p>
+                <%= image_tag("presInfo_icon-3.png", alt: "Usted se Beneficia", title: "Usted se Beneficia") %>
+                <h5>Usted se Beneficia</h5>
+                <p>Finalmente pueden recibir premios, descuentos, artículos nuevos,<br />¡Y mucho más!</p>
             </article>
         </div>
 
         <article class="scrollBottom">
-            <a href="#contentIntroduction" class="scrollArrow slowscroll" title="">Go to How it works</a>
+            <a href="#contentIntroduction" class="scrollArrow slowscroll" title="">Acceda a Cómo funciona</a>
         </article>
 
     </div>
@@ -80,23 +80,23 @@
     <div class="container">
 
         <article id="contentIntroduction" class="content contentIntro">
-            <h2>How Qaddy Works</h2>
-            <p>Qaddy solves the largest problem faced by e-retailers today:<br />How to attract new online traffic in a cost-efficient way.</p>
+            <h2>Cómo Funciona</h2>
+            <p><i>laComparto</i> soluciona el mayor problema que enfrentan los microempresarios hoy en día:<br /> Como atraer nuevo tráfico online de una forma económica y eficiente.</p>
             <div class="lineBr"></div>
             <br class="clear" />
         </article>
 
         <div class="row-fluid">
             <article class="content">
-                <h3><strong>Step 1:</strong> Clients purchase.</h3>
+                <h3><strong>Primer Paso:</strong> Los clientes compran.</h3>
 
                 <div class="span5 offset1">
-                    <p>So the process starts like this: You click on the sign up button above, where you will have to fill a few simple fields. After this you will be ready to get the benefits our platform has to offer.</p>
-                    <p>Then, your clients will start visiting your store and spend some time on it. They take a look on a few products they might want to buy, to finally decide which of those products better fit their needs and purchase a number of them, which obviously they liked very much.</p>
+                    <p>El proceso comienza así: Haces click en el botón inscribirse más arriba, en donde deberás llenar unos cuantos campos simples. Después de esto estarás listo para recibir los beneficios que nuestra plataforma tiene para ofrecer.</p>
+                    <p>Entonces, tus clientes comenzarán a visitar tu tienda y pasarán algún tiempo en ella. Darán un vistazo en algunos productos que quieran comprar, para finalmente decidir cuales de esos productos encajan de mejor forma con sus necesidades y comprarán algunos de ellos, los cuales obviamente les gustaron mucho.</p>
                 </div>
 
                 <div class="span5">
-                    <%= image_tag("images_how-to-1.jpg", alt: "Step 1", title: "Step 1", class: "img-polaroid") %>
+                    <%= image_tag("images_how-to-1.jpg", alt: "Primer Paso", title: "Primer Paso", class: "img-polaroid") %>
                 </div>
 
                 <div class="lineBr"></div>
@@ -107,16 +107,16 @@
 
          <div class="row-fluid">
             <article class="content">
-                <h3><strong>Step 2:</strong> They get notified.</h3>
+                <h3><strong>Segundo Paso:</strong> Ellos son notificados.</h3>
 
                 <div class="span5 offset1">
-                    <%= image_tag("images_how-to-2.jpg", alt: "Step 2", title: "Step 2", class: "img-polaroid") %>
+                    <%= image_tag("images_how-to-2.jpg", alt: "Segundo Paso", title: "Segundo Paso", class: "img-polaroid") %>
                 </div>
 
                 <div class="span5">
-                    <p>You may think <i>"So what… Step 1 is obvious"</i>. Well, here comes the interesting part where <strong>Qaddy</strong> takes place.</p>
-                    <p>Customers who have purchased a product will receive an e-mail, notifying them of the purchase and getting a clickable link that they can use to refer their friends the products they have just acquired.</p>
-                    <p>If they finally do, you will be expanding the amount of people that visits your store, making them become potential clients.</p>
+                    <p>Puedes pensar "Y qué… el primer paso es obvio". Bueno, aquí viene la parte interesante donde <strong>laComparto</strong> toma lugar.</p>
+                    <p>Los Clientes que han comprado un producto recibirán un e-mail, notificándolos de su compra y obtendrán un link clickeable, el cual pueden utilizar para referirle a sus amigos sobre los productos que acaban de adquirir.</p>
+                    <p>Si ellos lo hacen, estarás expandiendo la cantidad de personas que visita tu tienda, convirtiéndolos en clientes potenciales.</p>
                 </div>
 
                 <div class="lineBr"></div>
@@ -126,16 +126,16 @@
 
         <div class="row-fluid">
             <article class="content">
-                <h3><strong>Step 3:</strong> Clients refer their friends!</h3>
+                <h3><strong>Tercer Paso:</strong> Los Clientes comparten con su amigos!</h3>
 
                 <div class="span5 offset1">
-                    <p>When they click the link on the notification e-mail, customers will be redirected to a page which contains the list of products they have purchased.</p>
-                    <p>Once in there, they will have to Login with their <strong>Facebook account</strong> in order to be able to refer.</p>
-                    <p>Each product on the list will have its proper name and picture. Then below a field where they can write anything they would like to add about the purchased product.</p>
+                    <p>Cuando los clientes hagan click en el link del e-mail de notificación, serán redirigidos a una página que contiene la lista de productos que compraron.</p>
+                    <p>Una vez dentro, deberán ingresar con su <strong>Cuenta de Facebook</strong> y así estarán habilitados para compartir.</p>
+                    <p>Cada producto en la lista tendrá su nombre e imagen respectivas. Abajo, un campo donde pueden escribir cualquier comentario que quieran agregar sobre el producto adquerido.</p>
                 </div>
 
                 <div class="span5">
-                    <%= image_tag("images_how-to-3.jpg", alt: "Step 3", title: "Step 3", class: "img-polaroid") %>
+                    <%= image_tag("images_how-to-3.jpg", alt: "Tercer Paso", title: "Tercer Paso", class: "img-polaroid") %>
                 </div>
 
                 <br class="clear" />
@@ -150,13 +150,13 @@
 <div id="successModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="successModalLabel">Thank You!</h3>
+        <h3 id="successModalLabel">¡Gracias!</h3>
     </div>
     <div class="modal-body">
-        <p>Thank you! We'll notify you the minute we open the doors!</p>
+        <p>¡Gracias! Le notificaremos el momento en que abren las puertas!</p>
     </div>
     <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
     </div>
 </div>
 

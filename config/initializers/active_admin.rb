@@ -11,7 +11,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Qaddy"
+  config.site_title = "laComparto.com"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -55,11 +55,11 @@ ActiveAdmin.setup do |config|
   config.default_namespace = :admin
 
   config.namespace :admin do |admin|
-    admin.site_title = "Qaddy Admin Portal"
+    admin.site_title = "laComparto Admin Portal"
   end
 
   config.namespace :retailer do |retailer|
-    retailer.site_title = "Qaddy Retailer Portal"
+    retailer.site_title = "laComparto Retailer Portal"
   end
 
   # == User Authentication
@@ -188,20 +188,20 @@ ActiveAdmin.setup do |config|
 end
 
 
-module ActiveAdmin 
-  module Views 
-    module Pages 
-      class Base < Arbre::HTML::Document 
+module ActiveAdmin
+  module Views
+    module Pages
+      class Base < Arbre::HTML::Document
 
         # override footer
-        def build_footer 
+        def build_footer
           div :id => "footer" do
             hr
-            para "#{link_to "Qaddy", root_path} &copy; #{Date::today.year}".html_safe
+            para "#{link_to "laComparto.com", root_path} &copy; #{Date::today.year}".html_safe
           end
-        end 
+        end
 
-      end 
-    end 
-  end 
-end 
+      end
+    end
+  end
+end
