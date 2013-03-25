@@ -10,7 +10,7 @@
 	        <%= text_area_tag 'comment', order_item.default_sharing_text, class: 'comment' %>
 		    <%= hidden_field_tag 'item_ref_code', order_item.ref_code %>
 		    <br>
-		    <%= submit_tag "Login to share", class: "sharebtn btn btn-qaddy btn-large pull-right disabled", disabled: 'disabled', data: { logintext: "Login to share", sharetext: "SHARE IT!", sharingtext: "Sharing...",  sharedtext: "Shared!", isshared: false } %>
+		    <%= submit_tag "Inicie sesión para compartir", class: "sharebtn btn btn-qaddy btn-large pull-right disabled", disabled: 'disabled', data: { logintext: "Inicie sesión para compartir", sharetext: "¡Compártelo!", sharingtext: "Compartir ...",  sharedtext: "Compartido!", isshared: false } %>
 		<% end %>
 	</div>
 </div>
