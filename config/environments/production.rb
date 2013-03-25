@@ -21,7 +21,7 @@ Qaddy::Application.configure do
   config.assets.digest = true
 
   # default app host for mailer
-  config.action_mailer.default_url_options = { host: "staging.getqaddy.com" }
+  config.action_mailer.default_url_options = { host: ENV['DEFAULT_URL_OPTIONS'], }
 
   # perform email deliveries
   config.action_mailer.perform_deliveries = true

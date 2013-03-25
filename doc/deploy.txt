@@ -2,6 +2,9 @@ ENV VARS:
 
   DATABASE_URL (for Heroku)
 
+  # app stuff
+  DEFAULT_URL_OPTIONS
+
   # sendgrid
   SENDGRID_USERNAME
   SENDGRID_PASSWORD
@@ -18,15 +21,17 @@ ENV VARS:
   # facebook
   FB_APP_ID
   FB_SECRET_KEY
-  
+
+
+
 ===========
 
 RAKE TASKS:
 
   qaddy:download_product_images
   qaddy:generate_short_urls
-  qaddy:send_scheduled_emails[destination_email=nil]  // call without params to send emails to actual buyers. 
-                                                      //call with email param to send email to fixed email address, 
+  qaddy:send_scheduled_emails[destination_email=nil]  // call without params to send emails to actual buyers.
+                                                      //call with email param to send email to fixed email address,
                                                       // e.g qaddy:send_scheduled_emails['test@example.com']
 
 
