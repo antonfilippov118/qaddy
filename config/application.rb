@@ -35,6 +35,8 @@ module Qaddy
     # I18n.locale = config.i18n.locale = config.i18n.default_locale
     config.i18n.locale = config.i18n.default_locale
     config.i18n.fallbacks = [:en]
+    I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.yml').to_s]
+    I18n.locale = :es
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
