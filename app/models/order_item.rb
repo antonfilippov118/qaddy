@@ -2,6 +2,7 @@ class OrderItem < ActiveRecord::Base
   include QaddyHelpers
 
   belongs_to :order
+  has_many :shares, dependent: :destroy
 
   attr_accessible :default_sharing_text
   attr_accessible :description
@@ -12,7 +13,7 @@ class OrderItem < ActiveRecord::Base
   attr_accessible :total
   attr_accessible :product_image # paperclip attachment, downloaded product image from image_url
 
-  has_attached_file :product_image, 
+  has_attached_file :product_image,
     styles: { thumb: '100x100>', small: '200x200>', medium: '300x300>', big: '500x500>' },
     path: "orderitem/:attachment/:id/:style.:extension",
     s3_permissions: :private
@@ -28,7 +29,7 @@ class OrderItem < ActiveRecord::Base
 
   def product_image_from_url(url)
     self.product_image = URI.parse(url)
-  end  
+  end
 
   def generate_ref_code
     begin
