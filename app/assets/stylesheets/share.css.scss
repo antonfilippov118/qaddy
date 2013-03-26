@@ -116,3 +116,38 @@ img#background {
   }
 
 }
+
+/* Mobiles (portrait & landscape) */
+@media screen and (max-width: 540px) {
+  body {
+    padding: 8px;
+  }
+
+  #sharing-container {
+    padding:16px;
+  }
+
+  .modal-header {
+    padding: 8px;
+    height: 20px;
+  }
+
+  .modal-header h3 {
+    font-size: 16px;
+  }
+
+  .modal-body {
+    font-size: 12px;
+    padding: 8px;
+
+    p {
+      line-height: 120%;
+    }
+  }
+
+  .modal-footer {
+    padding: 8px;
+    // height: 20px;
+  }
+
+}
