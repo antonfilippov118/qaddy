@@ -42,14 +42,14 @@ namespace :qaddy do
     end
   end
 
-  desc "Send scheduled emails"
+  desc "Send scheduled emails (defaults to original destination emails- use destination_email param to send to a single email address for testing)"
   task :send_scheduled_emails, [:destination_email] => :environment do |t, args|
     args.with_defaults(:destination_email => nil)
 
     # get prepared orders
-    orders = Order.where("email_sent_count = 0 AND send_email_at < ? 
-                          AND short_url_emailview IS NOT NULL 
-                          AND short_url_doshare IS NOT NULL", 
+    orders = Order.where("email_sent_count = 0 AND send_email_at < ?
+                          AND short_url_emailview IS NOT NULL
+                          AND short_url_doshare IS NOT NULL",
                           DateTime.now).
                           order("created_at ASC").
                           limit(100)
@@ -77,5 +77,12 @@ namespace :qaddy do
       end
     end
   end
+
+  desc "Remove old sessions (default 7 days)"
+  task :delete_old_sessions, [:days_ago] => :environment do |t, args|
+    args.with_defaults(:days_ago => 7)
+    Session.delete_all(['updated_at < ?', args.days_ago.to_i.days.ago])
+  end
+
 
 end

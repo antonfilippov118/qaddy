@@ -55,6 +55,9 @@ module Qaddy
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    # session store
+    config.action_dispatch.session_store = :active_record_store
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
