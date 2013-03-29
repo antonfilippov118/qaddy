@@ -50,6 +50,10 @@ class Order < ActiveRecord::Base
     self.short_url_doshare = bitly.shorten(url).short_url
   end
 
+  def has_discount?
+    self.discount_code_perc.to_i > 0
+  end
+
   private
 
     def set_nested(order_item)
