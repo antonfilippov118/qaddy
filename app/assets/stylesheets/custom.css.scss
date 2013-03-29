@@ -140,6 +140,7 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+  white-space: normal;
 }
 
 #error_explanation {

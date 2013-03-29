@@ -9,6 +9,10 @@ $(document).ready(function() {
 
   $('.shareform')
     .bind("ajax:beforeSend", function(evt, xhr, settings) {
+      if (!fbLoggedIn) {
+        authUser();
+        return false;
+      }
       var $form = $(this);
       var btn = $form.find('.sharebtn');
       btn.val(btn.data('sharingtext'));
@@ -59,12 +63,13 @@ function checkLoginStatus(response) {
   $('#login').removeClass('disabled');
   $('#login').removeAttr('disabled');
 
-  if(response && response.status == 'connected') {
+  if (response && response.status == 'connected') {
     fbLoggedIn = true;
 
     var loginBtnTxt = $('#login').data('logouttext');
     $('#login').text(loginBtnTxt);
-    $('#login').addClass('active');
+    $('#logout').removeClass('hide');
+    $('.loginrow').addClass('hide');
 
     $('.sharebtn').each(function(index, obj) {
       $(this).val($(this).data('sharetext'));
@@ -76,13 +81,14 @@ function checkLoginStatus(response) {
 
     var txt = $('#login').data('logintext');
     $('#login').text(txt);
-    $('#login').removeClass('active');
+    $('#logout').addClass('hide');
+    $('.loginrow').removeClass('hide');
 
     $('.sharebtn').each(function(index, obj) {
       $(this).val($(this).data('logintext'));
     });
-    $('.sharebtn').addClass('disabled');
-    $('.sharebtn').attr('disabled','disabled');
+    $('.sharebtn').removeClass('disabled');
+    $('.sharebtn').removeAttr('disabled');
   }
 }
 

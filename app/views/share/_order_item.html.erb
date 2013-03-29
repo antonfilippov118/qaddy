@@ -9,7 +9,13 @@
 		<%= form_tag(share_publish_path, remote: true, :'data-type' => 'json', class: 'shareform') do %>
 	        <%= text_area_tag 'comment', order_item.default_sharing_text, class: 'comment' %>
 		    <%= hidden_field_tag 'item_ref_code', order_item.ref_code %>
-		    <%= submit_tag "Inicie sesión para compartir", class: "sharebtn btn btn-qaddy btn-large btn-block disabled", disabled: 'disabled', data: { logintext: "Inicie sesión para compartir", sharetext: "¡Compártelo!", sharingtext: "Compartir ...",  sharedtext: "Compartido!", isshared: false } %>
+
+		    <% if @order.has_discount? %>
+			    <%= submit_tag "Ingresa con Facebook para compartir y recibir tu descuento", class: "sharebtn btn btn-qaddy btn-large btn-block", data: { logintext: "Ingresa con Facebook para compartir y recibir tu descuento", sharetext: "¡Compártelo y recibe tu descuento!", sharingtext: "Compartiendo...",  sharedtext: "¡Compartido!", isshared: false } %>
+		    <% else %>
+			    <%= submit_tag "Ingresa con Facebook para compartir", class: "sharebtn btn btn-qaddy btn-large btn-block", data: { logintext: "Ingresa con Facebook para compartir", sharetext: "¡Compártelo!", sharingtext: "Compartiendo...", sharedtext: "¡Compartido!", isshared: false } %>
+		    <% end %>
+
 		<% end %>
 	</div>
 </div>

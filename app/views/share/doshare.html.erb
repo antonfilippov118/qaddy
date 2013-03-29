@@ -1,4 +1,4 @@
-<% provide(:title, "Comparta su reciente compra!") %>
+<% provide(:title, "Comparte tu reciente compra en las redes sociales!") %>
 
 <div class="row">
     <div class="span6 offset3">
@@ -15,8 +15,13 @@
 
             <div class="row-fluid">
                 <div class="span10 offset1">
-                    <h3>Comparta su reciente compra!</h3>
-                    <h4>Aquí tienes los productos que has comprado y puedes compartir con tus amigos</h4>
+                    <h3>Comparte tu reciente compra en las redes sociales!</h3>
+                    <h4>
+                        Aquí tienes los productos que has comprado y puedes compartir con tus amigos.
+                        <% if @order.has_discount? %>
+                            Al compartir <%= @order.webstore.name %> te regalará un código para tener un <%= @order.discount_code_perc.to_i %>% de descuento en tu siguiente compra!
+                        <% end %>
+                    </h4>
                 </div>
             </div>
 
@@ -33,22 +38,18 @@
                     </div>
                 <% else %>
 
+                    <!-- About app button -->
                     <div class="row-fluid">
                         <div class="span6 offset3">
                             <button type="button" class="btn btn-large btn-block" data-toggle="modal" data-target="#aboutAppModal" data-backdrop="true" data-keyboard="false">Acerca de la aplicación</button>
-                            <br>
                         </div>
                     </div>
 
-
-                    <div class="row-fluid">
+                    <!-- FB login/out button -->
+                    <div class="row-fluid loginrow">
                         <div class="span6 offset3">
-
-                            <!-- FB login/out button -->
-                            <div>
-                                <p><button id="login" class="btn btn-primary btn-large btn-block disabled" disabled onClick="authUser();" data-logintext="Ingresar con Facebook" data-logouttext="Logout">Comprobando el estado de Facebook ...</button></p>
-                            </div>
-
+                            <br>
+                            <button id="login" class="btn btn-primary btn-large btn-block disabled" disabled onClick="authUser();" data-logintext="Ingresar con Facebook" data-logouttext="Logout">Comprobando el estado de Facebook ...</button>
                         </div>
                     </div>
 
@@ -59,14 +60,9 @@
                             <h3 id="aboutAppModalLabel">Acerca de la aplicación</h3>
                         </div>
                         <div class="modal-body">
-                            <p>Aplicación actualmente en <strong>Beta</strong></p>
-                            <p>Esta aplicación es para compartir la felicidad que usted siente al recibir su camisa favorita.
-                                La aplicación le pedirá que acepte los permisos de Facebook. No te preocupes, los datos se
-                                utilizarán exclusivamente para propósitos de compartir y la aplicación se rige por
-                                <a class="terminos" href="http://mangacorta.cl/assets/Terminos%20y%20Condiciones.pdf" target="_blank">los términos y condiciones</a>
-                                de MangaCorta.cl
-                            </p>
-                            <p>Esperamos que les guste!</p>
+                            <p>LaComparto.com es una plataforma para compartir la felicidad que uno siente al recibir un producto que acabas de comprar y además recibir un descuento o beneficio por hacerlo.</p>
+                            <p>La aplicación te pedirá que aceptes los permisos de Facebook. No te preocupes, los datos se utilizarán exclusivamente para propósitos de compartir y ningún dato será usado para otras intenciones.</p>
+                            <p>Esperamos que te guste!</p>
                         </div>
                         <div class="modal-footer">
                             <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
@@ -77,16 +73,16 @@
                     <div id="successModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3 id="successModalLabel">¡Gracias!</h3>
+                            <h3 id="successModalLabel">Gracias por compartir</h3>
                         </div>
                         <div class="modal-body">
-                            <p>Gracias por compartir con tus amigos!
+                            <p>Gracias por compartir tu felicidad con tus amigos!
                                 <% if (@order.discount_code_perc.to_i > 0) %>
-                                    Por favor espere hasta una hora y debería recibir un correo electrónico de nosotros con un
-                                    código de descuento que podrás canjear en su próxima compra o dar a su amigo!
+                                    Obtén un <%= @order.discount_code_perc.to_i %>% de descuento en <%= link_to @order.webstore.url, @order.webstore.url %> usando el código <b>TODO</b>.
+                                    Este código se ingresa en el último paso del carro de compras.
                                 <% end %>
                             </p>
-                            <p>Sigue compartiendo tus artículos favoritos!</p>
+                            <p>Sigue compartiendo tus productos favoritos!</p>
                         </div>
                         <div class="modal-footer">
                             <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
@@ -95,7 +91,15 @@
 
                     <div class="lineBr"></div>
 
+                    <!-- Order items -->
                     <%= render partial: "order_item", collection: @order.order_items %>
+
+                    <!-- Logout button -->
+                    <div class="row-fluid">
+                        <div class="span2 offset10">
+                            <button id="logout" class="btn btn-primary btn-small btn-block hide" onClick="authUser();">Logout</button>
+                        </div>
+                    </div>
 
                 <% end %>
             <% end %>
