@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  layout "application-old"
+
   before_filter :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :change_password]
   before_filter :correct_user, only: [:show, :edit, :update, :change_password]
   before_filter :admin_user, only: [:index, :destroy]

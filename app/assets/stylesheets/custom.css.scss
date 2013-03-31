@@ -104,6 +104,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
+  background: none;
 
   a {
     color: $gray;
@@ -154,4 +155,12 @@ input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
- }
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+}
