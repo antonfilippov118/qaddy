@@ -26,7 +26,7 @@ class Campaign < ActiveRecord::Base
       begin
         self.tracking_url_params = self.tracking_url_params.to_s.strip
         uri = URI.parse(self.tracking_url_params)
-        if uri.scheme.nil? && uri.hostname.nil? && uri.query.nil?
+        if uri.scheme.nil? && uri.host.nil? && uri.query.nil?
           if self.tracking_url_params[0,1] != "?"
             uri = URI.parse("?#{self.tracking_url_params}")
           end
