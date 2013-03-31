@@ -1,5 +1,5 @@
 ActiveAdmin.register Order, namespace: :retailer do
-  menu :priority => 3
+  menu :priority => 4
 
   controller do
     def scoped_collection
@@ -18,10 +18,17 @@ ActiveAdmin.register Order, namespace: :retailer do
   filter :customer_email
   filter :customer_name
   filter :send_email_at
-  filter :discount_code_perc
   filter :internal_comment
+  filter :discount_code
+  filter :discount_code_perc
+  filter :tracking_url_params
   filter :created_at
   filter :updated_at
+
+  # scopes
+  scope :all, :default => true
+  scope :no_discount_code
+  scope :no_discount_perc
 
   # Customize index screen
   index do
@@ -34,6 +41,10 @@ ActiveAdmin.register Order, namespace: :retailer do
     column :customer_email
     column "Items" do |order|
       order.order_items.count
+    end
+    column :discount_code
+    column "Discount %" do |order|
+      order.discount_code_perc
     end
     column :created_at
   end
@@ -49,8 +60,10 @@ ActiveAdmin.register Order, namespace: :retailer do
       row :customer_name
       row :send_email_after_hours
       row :send_email_at
-      row :discount_code_perc
       row :internal_comment
+      row :discount_code
+      row :discount_code_perc
+      row :tracking_url_params
       row :created_at
       row :updated_at
     end
@@ -81,8 +94,10 @@ ActiveAdmin.register Order, namespace: :retailer do
       f.input :customer_name
       f.input :send_email_after_hours
       f.input :send_email_at
-      f.input :discount_code_perc
       f.input :internal_comment
+      f.input :discount_code
+      f.input :discount_code_perc
+      f.input :tracking_url_params
     end
 
     f.has_many :order_items do |oi_f|

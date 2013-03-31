@@ -2,7 +2,8 @@ class Webstore < ActiveRecord::Base
   belongs_to :user
   has_many :orders, dependent: :destroy
   has_many :email_banners, dependent: :destroy
-  
+  has_many :campaigns, dependent: :destroy
+
   attr_accessible :description, :name, :url, :user_id
 
   validates_presence_of :user

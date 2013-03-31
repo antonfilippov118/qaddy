@@ -78,7 +78,9 @@
                         <div class="modal-body">
                             <p>Gracias por compartir tu felicidad con tus amigos!
                                 <% if (@order.discount_code_perc.to_i > 0) %>
-                                    Obtén un <%= @order.discount_code_perc.to_i %>% de descuento en <%= link_to @order.webstore.url, @order.webstore.url %> usando el código <b>TODO</b>.
+                                    Obtén un <%= @order.discount_code_perc.to_i %>% de descuento en <%= link_to @order.webstore.url, @order.webstore.url %> usando el código
+                                    <b id="disccode"><small id="discloader">(<%= image_tag("ajax-loader.gif", alt: "cargando", title: "") %>cargando)</small></b>.
+                                    <br>
                                     Este código se ingresa en el último paso del carro de compras.
                                 <% end %>
                             </p>
@@ -110,4 +112,5 @@
 </div>
 
 <%= image_tag("bg_image-share-2000.jpg", alt: "background", title: "", id: "background" ) %>
+<div id="pathurlinfo" class="hidden" data-getcodepath="<%= share_getcode_path %>" data-redirecturl="<%= share_doshare_redirect_url %>"></div>
 

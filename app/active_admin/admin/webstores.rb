@@ -18,6 +18,7 @@ ActiveAdmin.register Webstore do
     column :url
     column :user
     column :created_at
+    default_actions
   end
 
   form do |f|

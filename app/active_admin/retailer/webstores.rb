@@ -18,6 +18,7 @@ ActiveAdmin.register Webstore, namespace: :retailer do
     end
     column :url
     column :description
+    default_actions
   end
 
   show do |webstore|

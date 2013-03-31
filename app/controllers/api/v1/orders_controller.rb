@@ -10,6 +10,15 @@ module Api
       def create
         begin
           @order = @webstore.orders.build(params[:order])
+
+          # find most recent active campaign and save discount info with an order
+          @campaign = @order.webstore.campaigns.where(active: true).order('created_at desc').first
+          if @campaign
+            @order.discount_code = @campaign.code
+            @order.discount_code_perc = @campaign.amount
+            @order.tracking_url_params = @campaign.tracking_url_params
+          end
+
           @order.save!
         rescue Exception => e
           respond_with( { error: e.message }, status: :unprocessable_entity, location: nil )
@@ -18,6 +27,7 @@ module Api
 
         respond_with(@order, location: nil)
       end
+
 
       private
 

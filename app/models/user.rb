@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   has_many :webstores, dependent: :destroy
   has_one :api_key, dependent: :destroy
+  has_many :campaigns, through: :webstores
 
   has_secure_password
 
@@ -25,7 +26,7 @@ class User < ActiveRecord::Base
   after_create :create_api_key
 
   validates :name, presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, unless: :no_password
   validates :password_confirmation, presence: true, unless: :no_password
@@ -62,7 +63,7 @@ class User < ActiveRecord::Base
     # This is for case when creating new user without password (e.g. from Admin)
     def check_empty_digest
       logger.debug("check_empty_digest")
-      if self.no_password.is_a?(TrueClass) || self.no_password == "1" 
+      if self.no_password.is_a?(TrueClass) || self.no_password == "1"
         if self.password.to_s.empty? && self.password_confirmation.to_s.empty? && self.password_digest.to_s.empty?
           self.password = SecureRandom.urlsafe_base64
           self.password_confirmation = self.password

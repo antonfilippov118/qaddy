@@ -14,4 +14,5 @@ module QaddyHelpers
   def set_default_url_options
     Rails.application.default_url_options = self.default_url_options
   end
+
 end

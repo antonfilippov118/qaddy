@@ -7,13 +7,15 @@ class Order < ActiveRecord::Base
 
   attr_accessible :customer_email
   attr_accessible :customer_name
-  attr_accessible :discount_code_perc
   attr_accessible :number
   attr_accessible :send_email_after_hours
   attr_accessible :send_email_at
   attr_accessible :total
   attr_accessible :order_items_attributes
   attr_accessible :internal_comment
+  attr_accessible :discount_code
+  attr_accessible :discount_code_perc
+  attr_accessible :tracking_url_params
 
   before_create :generate_ref_code
   before_create :generate_send_email_at
@@ -25,6 +27,11 @@ class Order < ActiveRecord::Base
   validates_presence_of :number, uniqueness: { scope: :webstore, case_sensitive: false }
   validates_presence_of :total
   validates_presence_of :webstore
+  validates :discount_code_perc, allow_nil: true, numericality: { less_than_or_equal_to: 99, greater_than_or_equal_to: 1 }
+
+  scope :no_discount_code, where("discount_code is null or discount_code = ''")
+  scope :no_discount_perc, where("discount_code_perc is null or discount_code_perc = 0")
+  scope :inactive, where(active: false)
 
   def display_name
     self.number

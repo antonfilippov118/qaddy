@@ -38,10 +38,14 @@ $(document).ready(function() {
 
         if (!isAnyShared) {
           isAnyShared = true;
+          // show success modal
           $('#successModal').modal({
             backdrop: true,
             keyboard: false
           });
+          // start loading code
+          var getCodePath = $('#pathurlinfo').data('getcodepath');
+          $('#disccode').load(getCodePath);
         }
       } else {
         btn.val(btn.data('sharetext'));
@@ -55,7 +59,8 @@ function authUser() {
   if (fbLoggedIn) {
     FB.logout(checkLoginStatus);
   } else {
-    FB.login(checkLoginStatus, {scope:'email, publish_stream', redirect_uri: "<%= @redirect %>"/*, display : 'touch'*/});
+    var redirectUrl = $('#pathurlinfo').data('redirecturl');
+    FB.login(checkLoginStatus, {scope:'email, publish_stream', redirect_uri: redirectUrl/*, display : 'touch'*/});
   }
 }
 

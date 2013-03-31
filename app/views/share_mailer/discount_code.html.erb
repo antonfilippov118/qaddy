@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body marginwidth="0" marginheight="0" style="margin:0;padding:0;background-color:#dee0e2">
+
+  <div marginwidth="0" marginheight="0" style="margin:0;padding:0;background-color:#dee0e2">
+    <center>
+      <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="border-collapse:collapse;margin:0;padding:0;background-color:#dee0e2;min-height:100%!important;width:100%!important">
+        <tbody>
+          <tr>
+            <td align="center" valign="top" style="border-collapse:collapse;margin:0;padding:20px;border-top:0;min-height:100%!important;width:100%!important">
+              <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;border:1px solid #bbbbbb">
+                <tbody>
+                  <tr>
+                    <td align="center" valign="top" style="border-collapse:collapse">
+                      <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
+                        <tbody>
+                          <tr>
+                            <td valign="top" style="padding-top:10px;padding-bottom:2px;border-collapse:collapse;color:#808080;font-family:Helvetica;font-size:10px;text-align:center">
+                              Información adicional sobre tu compra en <strong><%= @order.webstore.name %></strong>:
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" valign="top" style="border-collapse:collapse">
+                      <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
+                        <tbody>
+                          <tr>
+                            <td valign="top" style="border-collapse:collapse">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
+                                <tbody>
+                                  <tr>
+                                    <td valign="top" style="padding:9px;border-collapse:collapse">
+                                      <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse">
+                                        <tbody>
+                                          <tr>
+                                            <td valign="top" align="center" style="padding-right:9px;padding-left:9px;padding-top:0;padding-bottom:0;border-collapse:collapse">
+                                                <% if (@email_banner) %>
+                                                  <%= image_tag(attachments["banner#{File.extname(@email_banner.banner_file_name)}"].url, width:560) %>
+                                                <% else %>
+                                                  <h1><%= @order.webstore.name %></h1>
+                                                <% end %>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" valign="top" style="border-collapse:collapse">
+                      <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
+                        <tbody>
+                          <tr>
+                            <td valign="top" style="border-collapse:collapse">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
+                                <tbody>
+                                  <tr>
+                                    <td valign="top" style="border-collapse:collapse">
+                                      <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse">
+                                        <tbody>
+                                          <tr>
+                                            <td valign="top" style="padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;border-collapse:collapse;color:#505050;font-family:Helvetica;font-size:14px;line-height:150%;text-align:left">
+                                              <h1 style="display:block;font-family:Helvetica;font-size:26px;font-style:normal;font-weight:bold;line-height:100%;letter-spacing:normal;margin:0;text-align:center;color:#202020!important">Gracias por compartir!</h1>
+                                              <p style="text-align:center">
+                                                Obtén un <%= @order.discount_code_perc.to_i %>% de descuento en <%= link_to @order.webstore.name, @order.webstore.url %> usando el código: <br><br>
+                                                <b><%= @order.discount_code %></b>
+                                                <br><br>
+                                                Este código se ingresa en el último paso del carro de compras.
+                                              </p>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" valign="top" style="border-collapse:collapse">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;background-color:#f4f4f4">
+                        <tbody>
+                          <tr>
+                            <td style="padding:18px;border-collapse:collapse">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-top-width:1px;border-top-style:solid;border-top-color:#999999;border-collapse:collapse">
+                                <tbody>
+                                  <tr>
+                                    <td style="border-collapse:collapse">
+                                      <span></span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;background-color:#f4f4f4;border-top:0;border-bottom:0">
+                        <tbody>
+                          <tr>
+                            <td valign="top" style="border-collapse:collapse;color:#808080;font-family:Helvetica;font-size:10px;line-height:150%;padding-top:18px;padding-right:18px;padding-bottom:18px;padding-left:18px;text-align:left">
+                              <% if (@email_banner) %>
+                                <%= sanitize @email_banner.footer, tags: %w(em br div span b strong) %>
+                              <% end %>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </center>
+
+  </div>
+</body>
+</html>

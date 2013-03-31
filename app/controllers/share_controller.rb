@@ -10,6 +10,7 @@ class ShareController < ApplicationController
   end
 
   # GET '/share/doshare/:ref_code', as: :share_doshare
+  # GET '/share/doshare', as: :share_doshare_redirect
   def doshare
     @fb_app_id = Koala::Facebook::OAuth.new.app_id
     @redirect = share_doshare_redirect_url
@@ -30,14 +31,33 @@ class ShareController < ApplicationController
     end
   end
 
+  # GET '/share/getcode', as: :share_getcode
+  def getcode
+    # Get ref_code from session. Check if any order_item was shared. Check if we have discount code
+    ref_code = session[:ref_code]
+    order = Order.find_by_ref_code(ref_code)
+    order.order_items.each do |oi|
+      if oi.share_count > 0
+        render text: order.discount_code
+        return
+      end
+    end
+    # order not found or no items shared
+    head :bad_request
+  end
+
   # GET '/share/clicked/:ref_code', as: :share_clicked
   def clicked
     order_item = OrderItem.find_by_ref_code(params[:ref_code])
 
     if order_item
+      # increment click count
       order_item.click_count += 1
       order_item.save!
-      redirect_to order_item.page_url
+      # compose URL
+      uri = URI.parse(order_item.page_url)
+      uri.query = [uri.query, order_item.order.tracking_url_params].compact.join('&')
+      redirect_to uri.to_s
     else
       render text: 'Item does not exist'
     end
@@ -88,6 +108,9 @@ class ShareController < ApplicationController
 
       @oi.share_count += 1
       @oi.save!
+
+      # send discount code by email
+      ShareMailer.discount_code(@order).deliver unless @order.discount_code.blank?
 
       @success = true
     end

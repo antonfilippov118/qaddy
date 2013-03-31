@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316210217) do
+ActiveRecord::Schema.define(:version => 20130331022116) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -37,6 +37,19 @@ ActiveRecord::Schema.define(:version => 20130316210217) do
   end
 
   add_index "api_keys", ["user_id"], :name => "index_api_keys_on_user_id"
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.decimal  "amount"
+    t.boolean  "active"
+    t.integer  "webstore_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "tracking_url_params"
+  end
+
+  add_index "campaigns", ["webstore_id"], :name => "index_campaigns_on_webstore_id"
 
   create_table "email_banners", :force => true do |t|
     t.text     "comment"
@@ -94,6 +107,8 @@ ActiveRecord::Schema.define(:version => 20130316210217) do
     t.integer  "email_read_count",       :default => 0, :null => false
     t.string   "short_url_emailview"
     t.string   "short_url_doshare"
+    t.string   "discount_code"
+    t.string   "tracking_url_params"
   end
 
   add_index "orders", ["number", "webstore_id"], :name => "index_orders_on_number_and_webstore_id", :unique => true

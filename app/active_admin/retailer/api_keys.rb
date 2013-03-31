@@ -1,5 +1,5 @@
 ActiveAdmin.register ApiKey, namespace: :retailer do
-  menu :priority => 4
+  menu :priority => 5
 
 
   controller do
