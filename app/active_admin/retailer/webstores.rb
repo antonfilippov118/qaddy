@@ -28,6 +28,13 @@ ActiveAdmin.register Webstore, namespace: :retailer do
       row :url
       row :description
       row :default_send_after_hours
+      row :send_email_without_discount do
+        if webstore.send_email_without_discount
+          status_tag("YES", :error)
+        else
+          status_tag("No", :ok)
+        end
+      end
       row :created_at
       row :updated_at
     end
@@ -40,6 +47,7 @@ ActiveAdmin.register Webstore, namespace: :retailer do
       f.input :url
       f.input :description
       f.input :default_send_after_hours
+      f.input :send_email_without_discount
     end
     f.actions
   end

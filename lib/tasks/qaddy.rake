@@ -57,6 +57,11 @@ namespace :qaddy do
     # check order has all order items prepared
     orders.each do |o|
       complete = true
+
+      # check order discount code and webstore settings
+      next if o.discount_code.nil? && !o.webstore.send_email_without_discount
+
+      # check order items image status and short links
       o.order_items.each do |oi|
         if oi.product_image_file_name.nil? || oi.short_url_clicked.nil?
           complete = false

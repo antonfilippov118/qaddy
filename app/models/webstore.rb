@@ -4,7 +4,7 @@ class Webstore < ActiveRecord::Base
   has_many :email_banners, dependent: :destroy
   has_many :campaigns, dependent: :destroy
 
-  attr_accessible :description, :name, :url, :default_send_after_hours, :user_id
+  attr_accessible :description, :name, :url, :default_send_after_hours, :send_email_without_discount, :user_id
 
   validates_presence_of :user
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
