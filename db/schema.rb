@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331022116) do
+ActiveRecord::Schema.define(:version => 20130401202809) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -167,8 +167,9 @@ ActiveRecord::Schema.define(:version => 20130331022116) do
     t.string   "url"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.integer  "default_send_after_hours", :default => 120
   end
 
   add_index "webstores", ["user_id"], :name => "index_webstores_on_user_id"

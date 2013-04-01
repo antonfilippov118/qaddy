@@ -27,6 +27,7 @@ ActiveAdmin.register Webstore, namespace: :retailer do
       row :name
       row :url
       row :description
+      row :default_send_after_hours
       row :created_at
       row :updated_at
     end
@@ -38,6 +39,7 @@ ActiveAdmin.register Webstore, namespace: :retailer do
       f.input :name
       f.input :url
       f.input :description
+      f.input :default_send_after_hours
     end
     f.actions
   end

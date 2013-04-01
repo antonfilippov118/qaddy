@@ -28,6 +28,7 @@ ActiveAdmin.register Webstore do
       f.input :name
       f.input :url
       f.input :description
+      f.input :default_send_after_hours
     end
     f.actions
   end

@@ -9,7 +9,11 @@ module Api
 
       def create
         begin
+          # bild order
           @order = @webstore.orders.build(params[:order])
+
+          # setup send_email_after_hours from webstore settings
+          @order.send_email_after_hours = @webstore.default_send_after_hours if @order.send_email_after_hours.nil?
 
           # find most recent active campaign and save discount info with an order
           @campaign = @order.webstore.campaigns.where(active: true).order('created_at desc').first
@@ -19,6 +23,7 @@ module Api
             @order.tracking_url_params = @campaign.tracking_url_params
           end
 
+          # save
           @order.save!
         rescue Exception => e
           respond_with( { error: e.message }, status: :unprocessable_entity, location: nil )
