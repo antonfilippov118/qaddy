@@ -107,5 +107,10 @@ module Qaddy
       api_key: ENV['BITLY_API_KEY']
     }
 
+    # misc app options
+    config.qaddy = {
+      max_skip_send_email_for_orders_older_than_days: 60
+    }
+
   end
 end

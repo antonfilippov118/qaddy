@@ -4,7 +4,13 @@ class Webstore < ActiveRecord::Base
   has_many :email_banners, dependent: :destroy
   has_many :campaigns, dependent: :destroy
 
-  attr_accessible :description, :name, :url, :default_send_after_hours, :send_email_without_discount, :user_id
+  attr_accessible :description
+  attr_accessible :name
+  attr_accessible :url
+  attr_accessible :default_send_after_hours
+  attr_accessible :send_email_without_discount
+  attr_accessible :skip_send_email_for_orders_older_than_days
+  attr_accessible :user_id
 
   validates_presence_of :user
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
@@ -12,5 +18,6 @@ class Webstore < ActiveRecord::Base
   validates :url, presence: true, length: { maximum: 200 }, format: { with: VALID_URL_REGEX }
   validates :description, presence: true, length: { maximum: 250 }
   validates :default_send_after_hours, presence: true, numericality: { less_than_or_equal_to: 4320, greater_than_or_equal_to: 0 }
+  validates :skip_send_email_for_orders_older_than_days, presence: true, numericality: { less_than_or_equal_to: 60, greater_than_or_equal_to: 0 }
 
 end

@@ -35,6 +35,7 @@ ActiveAdmin.register Webstore, namespace: :retailer do
           status_tag("No", :ok)
         end
       end
+      row :skip_send_email_for_orders_older_than_days
       row :created_at
       row :updated_at
     end
@@ -48,6 +49,7 @@ ActiveAdmin.register Webstore, namespace: :retailer do
       f.input :description
       f.input :default_send_after_hours
       f.input :send_email_without_discount
+      f.input :skip_send_email_for_orders_older_than_days
     end
     f.actions
   end
