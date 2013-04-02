@@ -1,0 +1,6 @@
+<%= form_for @order, url: send_sharing_email_admin_order_path do |f| %>
+  <%= f.email_field :customer_email %>
+  <br><br>
+  <%= f.submit value: 'Send Sharing Email' %>
+<% end %>
+

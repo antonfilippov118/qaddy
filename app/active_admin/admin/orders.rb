@@ -115,5 +115,19 @@ ActiveAdmin.register Order do
     f.actions
   end
 
+  # custom member actions
+  member_action :send_sharing_email, method: :put do
+    @order = Order.find(params[:id])
+    begin
+      @mail = ShareMailer.order(@order, params[:order][:customer_email]).deliver
+    rescue
+      redirect_to admin_order_path(@order), alert: "Cannot send email. Missing images?"
+      return
+    end
+    redirect_to admin_order_path(@order), notice: "Email sent to #{params[:order][:customer_email]}"
+  end
+
+  # sidebars
+  sidebar :send_sharing_email, only: :show
 
 end
