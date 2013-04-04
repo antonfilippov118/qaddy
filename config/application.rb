@@ -71,10 +71,10 @@ module Qaddy
     # config.log_level = :debug
 
     # Prepend all log lines with the following tags
-    config.log_tags = [ :subdomain, :uuid ]
+    # config.log_tags = [ :subdomain, :uuid ]
 
     # Use a different logger for distributed setups
-    config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+    # config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
 
     # mailer options
     ActionMailer::Base.default(from: ENV['MAILER_DEFAULT_FROM'])

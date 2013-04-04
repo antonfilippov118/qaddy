@@ -29,6 +29,7 @@ Qaddy::Application.routes.draw do
   match '/share/order_item_image/:ref_code', to: 'share#order_item_image',   via: :get,  as: :share_order_item_image
   match '/share/publish',                    to: 'share#publish',            via: :post, as: :share_publish
   match '/share/getcode',                    to: 'share#getcode',            via: :get,  as: :share_getcode
+  match '/share/fbsess',                     to: 'share#fbsess',             via: :get,  as: :share_fbsess
 
   # API routes
   namespace :api do

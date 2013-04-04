@@ -25,6 +25,15 @@ Qaddy::Application.configure do
   config.action_mailer.delivery_method = :file
   config.action_mailer.file_settings = { location: Rails.root.join('tmp/mail') }
 
+  # See everything in the log (default is :info)
+  config.log_level = :debug
+
+  # Prepend all log lines with the following tags
+  config.log_tags = [ :subdomain, :uuid ]
+
+  # Use a different logger for distributed setups
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new('log/development.log'))
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 

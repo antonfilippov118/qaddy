@@ -60,7 +60,7 @@ function authUser() {
     FB.logout(checkLoginStatus);
   } else {
     var redirectUrl = $('#pathurlinfo').data('redirecturl');
-    FB.login(checkLoginStatus, {scope:'email, publish_stream', redirect_uri: redirectUrl/*, display : 'touch'*/});
+    FB.login(checkLoginStatus, { scope: 'publish_actions', redirect_uri: redirectUrl });
   }
 }
 
@@ -70,6 +70,9 @@ function checkLoginStatus(response) {
 
   if (response && response.status == 'connected') {
     fbLoggedIn = true;
+
+    var fbsessUrl = $('#pathurlinfo').data('fbsessurl');
+    $.get(fbsessUrl);
 
     var loginBtnTxt = $('#login').data('logouttext');
     $('#login').text(loginBtnTxt);

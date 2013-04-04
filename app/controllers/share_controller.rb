@@ -133,4 +133,23 @@ class ShareController < ApplicationController
     send_data open(att.path) {|f| f.read }, filename: oi.product_image_file_name, type: oi.product_image_content_type, disposition: 'inline'
   end
 
+  # GET '/share/fbsess', as: :share_fbsess
+  # Short call to try to get the FB access token, exchange to extended token and save to session
+  def fbsess
+    @success = false
+    @ref_code = session[:ref_code]
+    @order = Order.find_by_ref_code(@ref_code)
+    @oi = @order.order_items.find_by_ref_code(params[:item_ref_code])
+
+    begin
+      @oauth = Koala::Facebook::OAuth.new
+      @access_token = @oauth.get_user_info_from_cookies(cookies)
+      @extended_access_token = @oauth.exchange_access_token_info(@access_token['access_token'])
+      session[:extended_access_token] = @extended_access_token if @extended_access_token.present?
+    rescue Exception => ex
+    end
+
+    head :ok
+  end
+
 end
