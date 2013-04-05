@@ -109,7 +109,9 @@ module Qaddy
 
     # misc app options
     config.qaddy = {
-      max_skip_send_email_for_orders_older_than_days: 60
+      max_skip_send_email_for_orders_older_than_days: 60,
+      webstore_email_from_format: "%{name} <%{sub}@#{ENV['MAILER_WEBSTORE_FROM_DOMAIN']}>",
+      webstore_email_bcc: ENV['MAILER_WEBSTORE_BCC']
     }
 
   end

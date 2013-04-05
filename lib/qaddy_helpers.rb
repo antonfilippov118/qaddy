@@ -15,4 +15,21 @@ module QaddyHelpers
     Rails.application.default_url_options = self.default_url_options
   end
 
+  def webstore_send_from_email(webstore)
+    # subdomain
+    sub = webstore.name.gsub(/[^0-9a-z]/i, '').downcase[0, 20]
+
+    # name
+    name_tmp = ""
+    if webstore.email_sender_name.present?
+      name_tmp = webstore.email_sender_name
+    else
+      name_tmp = webstore.name
+    end
+    name = name_tmp.lines.first.strip[0,50]
+
+    # Format email address with name
+    email = Rails.application.config.qaddy[:webstore_email_from_format] % { name: name, sub: sub }
+  end
+
 end

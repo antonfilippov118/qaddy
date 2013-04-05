@@ -10,6 +10,7 @@ class Webstore < ActiveRecord::Base
   attr_accessible :default_send_after_hours
   attr_accessible :send_email_without_discount
   attr_accessible :skip_send_email_for_orders_older_than_days
+  attr_accessible :email_sender_name
   attr_accessible :user_id
 
   validates_presence_of :user
@@ -19,5 +20,6 @@ class Webstore < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 250 }
   validates :default_send_after_hours, presence: true, numericality: { less_than_or_equal_to: 4320, greater_than_or_equal_to: 0 }
   validates :skip_send_email_for_orders_older_than_days, presence: true, numericality: { less_than_or_equal_to: 60, greater_than_or_equal_to: 0 }
+  validates :email_sender_name, length: { maximum: 50 }
 
 end

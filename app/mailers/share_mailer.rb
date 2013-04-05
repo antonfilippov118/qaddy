@@ -1,4 +1,5 @@
 class ShareMailer < ActionMailer::Base
+  include QaddyHelpers
 
   # send order details with sharing link and discount info if present
   def order(order, email_destination = nil)
@@ -16,7 +17,9 @@ class ShareMailer < ActionMailer::Base
     end
 
     email_destination ||= order.customer_email
-    mail(to: email_destination, subject: "Tu compra en #{order.webstore.name}")
+    bcc = Rails.application.config.qaddy[:webstore_email_bcc]
+    from_email = webstore_send_from_email(@order.webstore)
+    mail(from: from_email, to: email_destination, bcc: bcc, subject: "Tu compra en #{order.webstore.name}")
   end
 
   # send discount code
