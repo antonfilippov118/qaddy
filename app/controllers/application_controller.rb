@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_url and return if signed_in? && !current_user.admin?
     redirect_to signin_url and return if !signed_in?
   end
-  
+
   def current_admin_user
     return nil if signed_in? && !current_user.admin?
     current_user
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def authenticate_regular_user!
     redirect_to signin_url and return if !signed_in?
   end
-  
+
   def current_regular_user
     current_user
   end
