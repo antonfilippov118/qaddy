@@ -7,6 +7,7 @@
 # (create the session table with "rails generate session_migration")
 Qaddy::Application.config.session_store :active_record_store,
   key: 'lacp_sess',
-  secure: Rails.env == 'production'
+  secure: Rails.env == 'production',
+  httponly: true
 
 ActiveRecord::SessionStore.session_class = Session
