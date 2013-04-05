@@ -14,8 +14,10 @@ Qaddy::Application.configure do
   config.action_controller.perform_caching = false
 
   # default app host for mailer
-  config.action_mailer.default_url_options = { host: ENV['DEFAULT_URL_OPTIONS'] }
-
+  config.action_mailer.default_url_options = {
+    host: ENV['DEFAULT_URL_OPTIONS_HOST'],
+    protocol: ENV['DEFAULT_URL_OPTIONS_PROTOCOL']
+  }
 
   # perform email deliveries to the file (Rails.root/tmp/mail/ dir)
   # clear this folder before testing
