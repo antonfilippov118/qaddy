@@ -22,6 +22,7 @@ class ShareMailer < ActionMailer::Base
     mail(from: from_email, to: email_destination, bcc: bcc, subject: "Tu compra en #{order.webstore.name}")
   end
 
+
   # send discount code
   def discount_code(order, email_destination = nil)
     @order = order
@@ -33,6 +34,8 @@ class ShareMailer < ActionMailer::Base
     end
 
     email_destination ||= order.customer_email
-    mail(to: email_destination, subject: "Tu compra en #{order.webstore.name} - Gracias por compartir!")
+    bcc = Rails.application.config.qaddy[:webstore_email_bcc]
+    from_email = webstore_send_from_email(@order.webstore)
+    mail(from: from_email, to: email_destination, bcc: bcc, subject: "Tu compra en #{order.webstore.name} - Gracias por compartir!")
   end
 end
