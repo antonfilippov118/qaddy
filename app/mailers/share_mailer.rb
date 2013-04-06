@@ -13,7 +13,10 @@ class ShareMailer < ActionMailer::Base
 
     @order.order_items.each do |oi|
       att = Paperclip.io_adapters.for(oi.product_image.styles[:small])
-      attachments.inline["#{oi.id}#{File.extname(oi.product_image_file_name)}"] = File.read(att.path)
+      attachments.inline["#{oi.id}#{File.extname(oi.product_image_file_name)}"] = {
+        mime_type: oi.product_image_content_type,
+        content: File.read(att.path)
+      }
     end
 
     email_destination ||= order.customer_email
