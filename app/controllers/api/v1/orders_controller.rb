@@ -23,6 +23,23 @@ module Api
             @order.tracking_url_params = @campaign.tracking_url_params
           end
 
+          # TODO: apply default sharing texts
+          @order.order_items.each do |oi|
+            # use already provided sharing text
+            next if oi.default_sharing_text.present?
+            # use webstore's sharing text if any...
+            default_sharing_text = @webstore.default_sharing_texts.where(active: true).order('use_counter asc').first
+            # or use the global ones if none present
+            if default_sharing_text.nil?
+              default_sharing_text = DefaultSharingText.global_only.where(active:true).order('use_counter asc').first
+            end
+            # write it down, if we have any
+            if default_sharing_text.present?
+              default_sharing_text.increment!(:use_counter)
+              oi.default_sharing_text = default_sharing_text.text
+            end
+          end
+
           # save
           @order.save!
         rescue Exception => e

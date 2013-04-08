@@ -78,7 +78,6 @@ ActiveAdmin.register Campaign do
   # form screen
   form do |f|
     f.semantic_errors *f.object.errors.keys
-
     f.inputs "Campaign details" do
       f.input :webstore, collection: Webstore.order("LOWER(name) asc"), as: :select
       f.input :name
@@ -87,7 +86,6 @@ ActiveAdmin.register Campaign do
       f.input :active
       f.input :tracking_url_params
     end
-
     f.actions
   end
 

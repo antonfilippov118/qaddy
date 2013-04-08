@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405195230) do
+ActiveRecord::Schema.define(:version => 20130408131559) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(:version => 20130405195230) do
   end
 
   add_index "campaigns", ["webstore_id"], :name => "index_campaigns_on_webstore_id"
+
+  create_table "default_sharing_texts", :force => true do |t|
+    t.string   "text",                          :null => false
+    t.integer  "use_counter", :default => 0
+    t.boolean  "active",      :default => true
+    t.integer  "webstore_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "default_sharing_texts", ["webstore_id"], :name => "index_default_sharing_texts_on_webstore_id"
 
   create_table "email_banners", :force => true do |t|
     t.text     "comment"

@@ -3,6 +3,7 @@ class Webstore < ActiveRecord::Base
   has_many :orders, dependent: :destroy
   has_many :email_banners, dependent: :destroy
   has_many :campaigns, dependent: :destroy
+  has_many :default_sharing_texts, dependent: :destroy
 
   attr_accessible :description
   attr_accessible :name
