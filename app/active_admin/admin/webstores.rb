@@ -38,6 +38,10 @@ ActiveAdmin.register Webstore do
         end
       end
       row :skip_send_email_for_orders_older_than_days
+      row :custom_email_subject_with_discount
+      row :custom_email_html_text_with_discount
+      row :custom_email_subject_without_discount
+      row :custom_email_html_text_without_discount
       row :created_at
       row :updated_at
     end
@@ -55,6 +59,10 @@ ActiveAdmin.register Webstore do
       f.input :default_send_after_hours
       f.input :send_email_without_discount
       f.input :skip_send_email_for_orders_older_than_days
+      f.input :custom_email_subject_with_discount
+      f.input :custom_email_html_text_with_discount
+      f.input :custom_email_subject_without_discount
+      f.input :custom_email_html_text_without_discount
     end
     f.actions
   end

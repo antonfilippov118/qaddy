@@ -12,6 +12,10 @@ class Webstore < ActiveRecord::Base
   attr_accessible :send_email_without_discount
   attr_accessible :skip_send_email_for_orders_older_than_days
   attr_accessible :email_sender_name
+  attr_accessible :custom_email_subject_with_discount
+  attr_accessible :custom_email_html_text_with_discount
+  attr_accessible :custom_email_subject_without_discount
+  attr_accessible :custom_email_html_text_without_discount
   attr_accessible :user_id
 
   validates_presence_of :user

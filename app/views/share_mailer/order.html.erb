@@ -73,14 +73,10 @@
                                       <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse">
                                         <tbody>
                                           <tr>
-                                            <td valign="top" style="padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;border-collapse:collapse;color:#505050;font-family:Helvetica;font-size:14px;line-height:150%;text-align:left">
+                                            <td valign="top" style="padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;border-collapse:collapse;color:#505050;font-family:Helvetica;font-size:14px;line-height:150%;text-align:center">
                                               <h1 style="display:block;font-family:Helvetica;font-size:26px;font-style:normal;font-weight:bold;line-height:100%;letter-spacing:normal;margin:0;text-align:center;color:#202020!important">Si te gustó nuestro producto, compártelo!</h1>
                                               <p style="text-align:center">
-                                                Comparte tu reciente compra en <b><%= @order.webstore.name %></b> en las redes sociales
-                                                <% if @order.has_discount? %>
-                                                  y recibe un <b><%= @order.discount_code_perc.to_i %>% de descuento</b> en tu siguiente compra
-                                                <% end %>
-                                                !
+                                                <%= @text.html_safe %>
                                               </p>
                                             </td>
                                           </tr>
@@ -138,12 +134,12 @@
                                         <tbody>
                                           <tr>
                                             <td valign="top" style="padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;border-collapse:collapse;color:#505050;font-family:Helvetica;font-size:14px;line-height:150%;text-align:left">
-                                              <h1 style="text-align:center;display:block;font-family:Helvetica;font-size:26px;font-style:normal;font-weight:bold;line-height:100%;letter-spacing:normal;margin:0;color:#202020!important">
+                                              <h2 style="text-align:center;display:block;font-family:Helvetica;font-size:18px;font-style:normal;font-weight:bold;line-height:120%;letter-spacing:normal;margin:0;color:#202020!important">
                                                 Estos fueron los productos que compraste en <%= @order.webstore.name %>
                                                 <% if @order.has_discount? %>
                                                   y podrás compartir para recibir tu descuento
                                                 <% end %>
-                                              </h1>
+                                              </h2>
                                             </td>
                                           </tr>
                                         </tbody>
