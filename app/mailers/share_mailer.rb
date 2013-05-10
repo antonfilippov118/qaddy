@@ -22,6 +22,9 @@ class ShareMailer < ActionMailer::Base
       @text    = @order.webstore.custom_email_html_text_without_discount unless @order.webstore.custom_email_html_text_without_discount.blank?
     end
 
+    # make text replacements, if any
+    @text = @text.gsub('{order.discount_code_perc}', @order.discount_code_perc.to_i.to_s)
+
     if (@email_banner)
       att = Paperclip.io_adapters.for(@email_banner.banner.styles[:medium])
       attachments.inline["banner#{File.extname(@email_banner.banner_file_name)}"] = File.read(att.path)
