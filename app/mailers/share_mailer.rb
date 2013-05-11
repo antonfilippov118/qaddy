@@ -4,7 +4,6 @@ class ShareMailer < ActionMailer::Base
   # send order details with sharing link and discount info if present
   def order(order, email_destination = nil)
     @order = order
-    @email_banner = @order.webstore.email_banners.where(active: true).first
 
     # predefined subject,text
     @subject = "Tu compra en #{order.webstore.name}"
@@ -25,9 +24,9 @@ class ShareMailer < ActionMailer::Base
     # make text replacements, if any
     @text = @text.gsub('{order.discount_code_perc}', @order.discount_code_perc.to_i.to_s)
 
-    if (@email_banner)
-      att = Paperclip.io_adapters.for(@email_banner.banner.styles[:medium])
-      attachments.inline["banner#{File.extname(@email_banner.banner_file_name)}"] = File.read(att.path)
+    if (@order.webstore.custom_email_banner.exists?)
+      att = Paperclip.io_adapters.for(@order.webstore.custom_email_banner.styles[:medium])
+      attachments.inline["banner#{File.extname(@order.webstore.custom_email_banner_file_name)}"] = File.read(att.path)
     end
 
     @order.order_items.each do |oi|
@@ -50,9 +49,9 @@ class ShareMailer < ActionMailer::Base
     @order = order
     @email_banner = @order.webstore.email_banners.where(active: true).first
 
-    if (@email_banner)
-      att = Paperclip.io_adapters.for(@email_banner.banner.styles[:medium])
-      attachments.inline["banner#{File.extname(@email_banner.banner_file_name)}"] = File.read(att.path)
+    if (@order.webstore.custom_email_banner.exists?)
+      att = Paperclip.io_adapters.for(@order.webstore.custom_email_banner.styles[:medium])
+      attachments.inline["banner#{File.extname(@order.webstore.custom_email_banner_file_name)}"] = File.read(att.path)
     end
 
     email_destination ||= order.customer_email

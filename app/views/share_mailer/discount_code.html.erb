@@ -41,8 +41,8 @@
                                         <tbody>
                                           <tr>
                                             <td valign="top" align="center" style="padding-right:9px;padding-left:9px;padding-top:0;padding-bottom:0;border-collapse:collapse">
-                                                <% if (@email_banner) %>
-                                                  <%= image_tag(attachments["banner#{File.extname(@email_banner.banner_file_name)}"].url, width:560) %>
+                                                <% if (@order.webstore.custom_email_banner.exists?) %>
+                                                  <%= image_tag(attachments["banner#{File.extname(@order.webstore.custom_email_banner_file_name)}"].url, width:560) %>
                                                 <% else %>
                                                   <h1><%= @order.webstore.name %></h1>
                                                 <% end %>
@@ -120,8 +120,8 @@
                         <tbody>
                           <tr>
                             <td valign="top" style="border-collapse:collapse;color:#808080;font-family:Helvetica;font-size:10px;line-height:150%;padding-top:18px;padding-right:18px;padding-bottom:18px;padding-left:18px;text-align:left">
-                              <% if (@email_banner) %>
-                                <%= sanitize @email_banner.footer, tags: %w(em br div span b strong) %>
+                              <% if (!@order.webstore.custom_email_html_footer.blank?) %>
+                                <%= sanitize @order.webstore.custom_email_html_footer, tags: %w(em br div span b strong) %>
                               <% end %>
                             </td>
                           </tr>

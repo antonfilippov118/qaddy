@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510185559) do
+ActiveRecord::Schema.define(:version => 20130511051047) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,21 +61,6 @@ ActiveRecord::Schema.define(:version => 20130510185559) do
   end
 
   add_index "default_sharing_texts", ["webstore_id"], :name => "index_default_sharing_texts_on_webstore_id"
-
-  create_table "email_banners", :force => true do |t|
-    t.text     "comment"
-    t.boolean  "active",              :default => false, :null => false
-    t.integer  "webstore_id"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "banner_file_name"
-    t.string   "banner_content_type"
-    t.integer  "banner_file_size"
-    t.datetime "banner_updated_at"
-    t.text     "footer",              :default => "",    :null => false
-  end
-
-  add_index "email_banners", ["webstore_id"], :name => "index_email_banners_on_webstore_id"
 
   create_table "order_items", :force => true do |t|
     t.string   "page_url",                                  :null => false
@@ -188,6 +173,11 @@ ActiveRecord::Schema.define(:version => 20130510185559) do
     t.text     "custom_email_html_text_with_discount"
     t.string   "custom_email_subject_without_discount"
     t.text     "custom_email_html_text_without_discount"
+    t.string   "custom_email_banner_file_name"
+    t.string   "custom_email_banner_content_type"
+    t.integer  "custom_email_banner_file_size"
+    t.datetime "custom_email_banner_updated_at"
+    t.text     "custom_email_html_footer"
   end
 
   add_index "webstores", ["user_id"], :name => "index_webstores_on_user_id"

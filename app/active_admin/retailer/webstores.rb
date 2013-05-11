@@ -41,6 +41,14 @@ ActiveAdmin.register Webstore, namespace: :retailer do
       row :custom_email_html_text_with_discount
       row :custom_email_subject_without_discount
       row :custom_email_html_text_without_discount
+      row :custom_email_banner do
+        if (webstore.custom_email_banner.exists?)
+          image_tag(webstore.custom_email_banner.url(:thumb))
+        else
+          status_tag("None")
+        end
+      end
+      row :custom_email_html_footer
       row :created_at
       row :updated_at
     end
@@ -60,6 +68,8 @@ ActiveAdmin.register Webstore, namespace: :retailer do
       f.input :custom_email_html_text_with_discount
       f.input :custom_email_subject_without_discount
       f.input :custom_email_html_text_without_discount
+      f.input :custom_email_banner, as: :file, hint: f.object.custom_email_banner.exists? ? f.template.image_tag(f.object.custom_email_banner.url(:thumb)) : ""
+      f.input :custom_email_html_footer
     end
     f.actions
   end
