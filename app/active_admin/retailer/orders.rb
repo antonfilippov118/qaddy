@@ -1,14 +1,15 @@
 ActiveAdmin.register Order, namespace: :retailer do
   menu :priority => 4
 
-  controller do
-    def scoped_collection
-      Order.where(webstore_id: current_user.webstores.map(&:id))
-    end
-  end
+  # controller do
+  #   def scoped_collection
+  #     Order.where(webstore_id: current_user.webstores.map(&:id))
+  #   end
+  # end
 
+  # controller options
+  scope_to :current_user
   config.sort_order = "created_at_desc"
-
   actions :all, :except => :new
 
   # Customize filters
@@ -72,8 +73,23 @@ ActiveAdmin.register Order, namespace: :retailer do
       table_for order.order_items do
         column :name
         column :description
-        column :page_url
-        column :image_url
+        column :page_url, style: "width:200px" do |oi|
+          div class: "pageurl", style: "width:80px" do
+            link_to "Visit page", oi.page_url, target: "_blank", confirm: "You are about to open the following URL in a new page:\n\n#{oi.page_url}\n\nContinue?"
+          end
+        end
+        column :image_url do |oi|
+          text = ""
+          link = link_to "View original image", oi.image_url, target: "_blank", confirm: "You are about to open the following URL in a new page:\n\n#{oi.image_url}\n\nContinue?"
+          if oi.product_image.exists?
+            text = "<span class='status_tag active ok important' id='status_123'>Downloaded</span>".html_safe
+          else
+            text = "<span class='status_tag active error important' id='status_123'>Not downloaded yet</span>".html_safe
+          end
+          div class: "imageurl", style: "width:150px" do
+            safe_join [link, '<br>'.html_safe, text], ' '
+          end
+        end
         column :default_sharing_text
         column :qty
         column :total
@@ -110,8 +126,8 @@ ActiveAdmin.register Order, namespace: :retailer do
         oi_f.input :qty
         oi_f.input :total
         if !oi_f.object.nil?
-          # show the destroy checkbox only if it is an existing appointment
-          # else, there's already dynamic JS to add / remove new appointments
+          # show the destroy checkbox only if it is an existing order_item
+          # else, there's already dynamic JS to add / remove new order_item
           oi_f.input :_destroy, :as => :boolean, :label => "Destroy?"
         end
       end

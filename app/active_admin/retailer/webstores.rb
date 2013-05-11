@@ -1,11 +1,12 @@
 ActiveAdmin.register Webstore, namespace: :retailer do
   menu :priority => 2
 
+  # controller options
   scope_to :current_user
-
   config.sort_order = "name_asc"
   config.batch_actions = false
 
+  # filters
   filter :name
   filter :url
   filter :description

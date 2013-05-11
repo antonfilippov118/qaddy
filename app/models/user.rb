@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_one :api_key, dependent: :destroy
   has_many :campaigns, through: :webstores
   has_many :default_sharing_texts, through: :webstores
+  has_many :orders, through: :webstores
 
   has_secure_password
 
