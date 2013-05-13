@@ -47,7 +47,6 @@ class ShareMailer < ActionMailer::Base
   # send discount code
   def discount_code(order, email_destination = nil)
     @order = order
-    @email_banner = @order.webstore.email_banners.where(active: true).first
 
     if (@order.webstore.custom_email_banner.exists?)
       att = Paperclip.io_adapters.for(@order.webstore.custom_email_banner.styles[:medium])
