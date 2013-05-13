@@ -1,0 +1,11 @@
+<h3>CSV file requirements:</h3>
+
+<ul>
+    <li>Maximum <%= Rails.application.config.qaddy[:csv_order_import_limit_per_file] %> items per file</li>
+    <li>First line is a header line</li>
+    <li>UTF8 encoded</li>
+</ul>
+
+<%= link_to "Download example CSV file here", asset_path('example_import_100.csv'), target: '_blank' %>
+<br>
+<em>(right click, save as, rename the file to "example.csv")</em>

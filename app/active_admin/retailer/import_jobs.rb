@@ -208,4 +208,6 @@ ActiveAdmin.register ImportJob, namespace: :retailer do
     redirect_to retailer_import_job_path(job), notice: "The import finished: #{msg}"
   end
 
+  # sidebars
+  sidebar :help, only: [:new, :create]
 end

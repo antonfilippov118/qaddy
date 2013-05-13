@@ -56,6 +56,10 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.site_title = "laComparto Admin Portal"
+    admin.build_menu :utility_navigation do |menu|
+      menu.add id: 'current_user_menu_item', label: proc{ display_name current_active_admin_user }, url: proc{ user_path current_active_admin_user }
+      admin.add_logout_button_to_menu menu # can also pass priority & html_options for link_to to use
+    end
   end
 
   config.namespace :retailer do |retailer|
