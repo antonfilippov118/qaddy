@@ -1,5 +1,5 @@
 ActiveAdmin.register ApiKey do
-  menu :priority => 6
+  menu :priority => 7
 
   actions :all, :except => [:new, :destroy]
 

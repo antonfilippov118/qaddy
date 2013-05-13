@@ -1,7 +1,5 @@
 Qaddy::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
-
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
@@ -40,6 +38,7 @@ Qaddy::Application.routes.draw do
     end
   end
 
+  ActiveAdmin.routes(self)
 
 
   #########################

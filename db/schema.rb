@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511051047) do
+ActiveRecord::Schema.define(:version => 20130511181055) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,6 +61,40 @@ ActiveRecord::Schema.define(:version => 20130511051047) do
   end
 
   add_index "default_sharing_texts", ["webstore_id"], :name => "index_default_sharing_texts_on_webstore_id"
+
+  create_table "import_job_items", :force => true do |t|
+    t.datetime "last_process_date"
+    t.text     "last_process_message"
+    t.string   "last_process_status"
+    t.string   "order_number"
+    t.decimal  "order_total"
+    t.string   "order_customer_email"
+    t.string   "order_customer_name"
+    t.datetime "order_send_email_at"
+    t.string   "order_item_page_url"
+    t.string   "order_item_image_url"
+    t.string   "order_item_name"
+    t.string   "order_item_description"
+    t.decimal  "order_item_total"
+    t.integer  "order_item_qty"
+    t.integer  "import_job_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "import_job_items", ["import_job_id"], :name => "index_import_job_items_on_import_job_id"
+
+  create_table "import_jobs", :force => true do |t|
+    t.string   "filename"
+    t.boolean  "submitted"
+    t.datetime "last_process_date"
+    t.text     "last_process_message"
+    t.integer  "webstore_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "import_jobs", ["webstore_id"], :name => "index_import_jobs_on_webstore_id"
 
   create_table "order_items", :force => true do |t|
     t.string   "page_url",                                  :null => false

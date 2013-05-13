@@ -19,6 +19,7 @@ class Order < ActiveRecord::Base
 
   before_create :generate_ref_code
   before_create :generate_send_email_at
+  before_create :set_campaign
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -27,7 +28,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :number, uniqueness: { scope: :webstore, case_sensitive: false }
   validates_presence_of :total
   validates_presence_of :webstore
-  validates :discount_code_perc, allow_nil: true, numericality: { less_than_or_equal_to: 99, greater_than_or_equal_to: 1 }
+  validates :discount_code_perc, allow_nil: true, numericality: { less_than_or_equal_to: 99, greater_than_or_equal_to: 0 }
 
   scope :no_discount_code, where("discount_code is null or discount_code = ''")
   scope :no_discount_perc, where("discount_code_perc is null or discount_code_perc = 0")
@@ -68,9 +69,18 @@ class Order < ActiveRecord::Base
     end
 
     def generate_send_email_at
-      if (self.send_email_at.nil?)
-        self.send_email_at = DateTime.now.advance(hours: self.send_email_after_hours)
-      end
+      self.send_email_after_hours = self.webstore.default_send_after_hours if self.send_email_after_hours.nil?
+      self.send_email_at = DateTime.now.advance(hours: self.send_email_after_hours) if self.send_email_at.nil?
     end
 
+    def set_campaign
+      Rails.logger.info "SET_CAMPAIGN:"
+      campaign = self.webstore.campaigns.where(active: true).order('created_at desc').first
+      Rails.logger.info "CAMPAIGN: #{campaign}"
+      if campaign
+        self.discount_code = campaign.code
+        self.discount_code_perc = campaign.amount
+        self.tracking_url_params = campaign.tracking_url_params
+      end
+    end
 end

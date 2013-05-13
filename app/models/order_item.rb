@@ -19,6 +19,7 @@ class OrderItem < ActiveRecord::Base
     s3_permissions: :private
 
   before_create :generate_ref_code
+  before_create :set_default_sharing_text
 
   VALID_URL_REGEX = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
 
@@ -43,5 +44,23 @@ class OrderItem < ActiveRecord::Base
     url = Rails.application.routes.url_helpers.share_clicked_url(self.ref_code)
     self.short_url_clicked = bitly.shorten(url).short_url
   end
+
+  private
+
+    def set_default_sharing_text
+      return if self.default_sharing_text.present?
+      # use webstore's sharing text if any...
+      default_sharing_text = self.order.webstore.default_sharing_texts.where(active: true).order('use_counter asc').first
+      # or use the global ones if none present
+      if default_sharing_text.nil?
+        default_sharing_text = DefaultSharingText.global_only.where(active:true).order('use_counter asc').first
+      end
+      # write it down, if we have any
+      if default_sharing_text.present?
+        default_sharing_text.increment!(:use_counter)
+        self.default_sharing_text = default_sharing_text.text
+      end
+
+    end
 
 end

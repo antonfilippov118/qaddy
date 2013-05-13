@@ -3,13 +3,13 @@
  */
 
 $(document).ready(function() {
-  $("a.slowscroll").live('click', function() {
+  $('body').on('click', 'a.slowscroll', function() {
       var id = $(this).attr('href');
       $('html,body').animate({scrollTop: $(id).offset().top}, 'slow', 'swing');
       return false;
   });
 
-  $("a.opensignupform").live('click', function() {
+  $('body').on('click', 'a.opensignupform', function() {
     $('#signupFormContainer').collapse('show');
     $('input#company').focus();
   });

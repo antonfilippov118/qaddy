@@ -60,6 +60,10 @@ ActiveAdmin.setup do |config|
 
   config.namespace :retailer do |retailer|
     retailer.site_title = "laComparto Retailer Portal"
+    retailer.build_menu :utility_navigation do |menu|
+      menu.add id: 'current_user_menu_item', label: proc{ display_name current_active_admin_user }, url: proc{ user_path current_active_admin_user }
+      retailer.add_logout_button_to_menu menu # can also pass priority & html_options for link_to to use
+    end
   end
 
   # == User Authentication
@@ -175,6 +179,10 @@ ActiveAdmin.setup do |config|
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
 
+  # == Export links
+  #config.download_links = false
+  #config.download_links = [:csv, :xml, :json, :pdf] - PDF is not working
+  config.download_links = [:csv, :xml, :json]
 
   # == CSV options
   #
@@ -191,8 +199,8 @@ end
 module ActiveAdmin
   module Views
     module Pages
-      class Base < Arbre::HTML::Document
 
+      class Base < Arbre::HTML::Document
         # override footer
         def build_footer
           div :id => "footer" do
@@ -200,8 +208,8 @@ module ActiveAdmin
             para "#{link_to "laComparto.com", root_path} &copy; #{Date::today.year}".html_safe
           end
         end
-
       end
+
     end
   end
 end
