@@ -1,0 +1,19 @@
+<form accept-charset="UTF-8" action="/admin/campaigns" class="filter_form" id="q_search" method="get">
+	<div style="margin:0;padding:0;display:inline">
+		<input name="utf8" value="✓" type="hidden">
+	</div>
+	<div class="filter_form_field filter_select">
+		<label class=" label" for="q_webstore_id">Webstore</label>
+		<select id="q_webstore_id" name="q[webstore_id_eq]">
+			<option value="">Cualquiera</option>
+			<option value="1">Sergey Webstore</option>
+		</select>
+	</div>
+	<div class="buttons">
+		<input name="commit" value="Filtrar" type="submit">
+		<a href="#" class="clear_filters_btn">Quitar Filtros</a>
+		<input id="hidden_active_admin_order" name="order" value="created_at_desc" type="hidden">
+	</div>
+</form>
+	
+        

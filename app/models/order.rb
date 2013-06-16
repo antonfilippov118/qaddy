@@ -62,6 +62,7 @@ class Order < ActiveRecord::Base
     self.discount_code_perc.to_i > 0
   end
 
+
   private
 
     def set_nested(order_item)

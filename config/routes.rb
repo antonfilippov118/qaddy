@@ -3,6 +3,8 @@ Qaddy::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
+  
+  resources :dashboard
 
   # root for staging
   root :to => "static_pages#landing"

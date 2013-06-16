@@ -7,12 +7,14 @@ ActiveAdmin.register_page "Dashboard", namespace: :retailer do
   end  
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
-    div :class => "blank_slate_container", :id => "dashboard_default_message" do
-      span :class => "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
-      end
-    end
+    #div :class => "blank_slate_container", :id => "dashboard_default_message" do
+    #  span :class => "blank_slate" do
+    #    span I18n.t("active_admin.dashboard_welcome.welcome")
+    #    small I18n.t("active_admin.dashboard_welcome.call_to_action")
+    #  end
+    #end
+    
+    render 'dashboard/index', :admin=>false
 
     # Here is an example of a simple dashboard with columns and panels.
     #
