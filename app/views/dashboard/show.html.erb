@@ -38,8 +38,8 @@ if @page && @page == 'get_webstores'
 			<td class="emails-unique-opens">-</td>
 			<td class="emails-clicks"><%=order.emails_clicks %></td>
 			<td class="items-shared"><%=order.items_shared %></td>
-			<td class="shared-items-click-count">-</td>
-			<td classs="shared-items-clicks-average">-</td>
+			<td class="shared-items-click-count"><%=order.shared_items_click_count %></td>
+			<td classs="shared-items-clicks-average"><%=order.shared_items_clicks_average %></td>
       	</tr>
 	<% end %>	
 <% else %>

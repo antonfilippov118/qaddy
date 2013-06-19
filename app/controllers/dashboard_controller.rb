@@ -30,30 +30,31 @@ class DashboardController < ApplicationController
       group_clause = "strftime('%Y-%m-%d', orders.created_at)"
       
       if params['scope'] == 'daily'
-        where_clause += " and strftime('%Y-%m-%d', orders.created_at) > '" + (now - 30).strftime('%Y-%m-%d') + "'"
+        where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now - 30).strftime('%Y-%m-%d') + "'"
       end
       
       if params['scope'] == 'monthly'
         group_clause = "strftime('%Y-%m', orders.created_at)"
-        where_clause += " and strftime('%Y-%m-%d', orders.created_at) > '" + (now << 1).strftime('%Y-%m-%d') + "'"
+        where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now << 12).strftime('%Y-%m-%d') + "'"
       end
       
       if params['scope'] == 'weekly'
         group_clause = "strftime('%Y-%W', orders.created_at)"
-        where_clause += " and strftime('%Y-%m-%d', orders.created_at) > '" + (now - 7 * 26).strftime('%Y-%m-%d') + "'"
+        where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now - 7 * 26).strftime('%Y-%m-%d') + "'"
       end
       
       select_clause += ", count(DISTINCT orders.id) as registered_orders"
       select_clause += ", count(DISTINCT order_items.id) as registered_order_items"
       select_clause += ", sum(orders.email_sent_count) as emails_sent"
       select_clause += ", sum(orders.email_read_count) as emails_clicks"
-      select_clause += ", count(DISTINCT shares.id) as items_shared"
+      select_clause += ", sum(order_items.share_count) as items_shared"
+      select_clause += ", sum(order_items.click_count) as shared_items_click_count"
+      select_clause += ", avg(order_items.click_count) as shared_items_clicks_average"
       
       @orders = Order.joins("LEFT JOIN webstores ON webstores.id = orders.webstore_id")
                       .joins("LEFT JOIN order_items ON orders.id = order_items.order_id")
-                      .joins("LEFT JOIN shares ON order_items.id = shares.order_item_id")
                       .where(where_clause)
-                      .select(select_clause).group(group_clause)
+                      .select(select_clause).group(group_clause).order('orders.created_at desc')
       
       logger.info(@orders.inspect)
       
