@@ -13,20 +13,19 @@ $(document).ready(function(){
 });
 
 function get_data_ajax() {
-	console.log($('#collection_selection').serialize());
-	var params = $('#collection_selection').serialize();
+
+	var params = $('#collection_selection').serializeArray();
 	$.ajax({
-        url: "/dashboard/get_order_statistics?" + params,
-        type: 'GET',
+        url: "/dashboard/get_order_statistics",
+        type: 'POST',
+		data: params,
         cache: false,
         success: function(html) {
-			console.log(html)
-			$('.index_as_table').html(html)
+			$('.index_as_table table tbody').html(html)
             
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log("error :"+XMLHttpRequest.responseText);
-            //alert(textStatus);
+
         }
         
 
@@ -36,11 +35,10 @@ function get_data_ajax() {
 function get_webstores_ajax() {
 	var is_admin = $('#is_admin').val();
 	$.ajax({
-        url: "/dashboard/get_webstores?is_admin=" + is_admin,
+        url: "/dashboard/get_webstores?is_admin=" + is_admin + "&id=get_webstores",
         type: 'GET',
         cache: false,
         success: function(html) {
-			console.log(html)
 			$('#webstore_selector .dropdown_menu_list').html(html)
 			$('#webstore_selector ul.dropdown_menu_list > li').click(function(){
 				$('#webstore_id').val($(this).data('webstore-id'));
@@ -53,8 +51,7 @@ function get_webstores_ajax() {
             
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log("error :"+XMLHttpRequest.responseText);
-            //alert(textStatus);
+
         }
         
 

@@ -56,9 +56,11 @@ class DashboardController < ApplicationController
                       .where(where_clause)
                       .select(select_clause).group(group_clause).order('orders.created_at desc')
       
-      logger.info(@orders.inspect)
-      
       @orders.each do |order|
+        if order.shared_items_clicks_average.nil?
+          order.shared_items_clicks_average = 0
+        end
+        order.shared_items_clicks_average = sprintf('%.2f', order.shared_items_clicks_average)
         if params[:scope] == 'daily'
           order.ordered_date = DateTime.parse(order.ordered_date).strftime('%d %b, %Y')
         end
@@ -79,10 +81,9 @@ class DashboardController < ApplicationController
       if current_user.admin && params[:is_admin] == 'true'
         @webstores = Webstore.all
       else
-        @webstores = Webstore.where("user_id=#{current_user.id}")
+        @webstores = Webstore.where(:user_id => current_user.id)
       end
-      
-      logger.info(@webstores.inspect)
+
     end
   end
   

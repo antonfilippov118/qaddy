@@ -9,28 +9,11 @@ if @page && @page == 'get_webstores'
 	<% 	end
 	end %>
 <%	else   %>
-	
 
-<table id="index_table_campaigns" class="index_table index" paginator="true" border="0" cellpadding="0" cellspacing="0">
-	<thead>
-		<tr>
-            <th class="date">Date</th>
-            <th class="registered-orders">Regsitered Orders</th>
-            <th class="registered-order-items">Registered Order Items</th>
-            <th class="emails-sent">Emails Sent</th>
-            <th class="emails-delivered">Emails Delivered</th>
-            <th class="emails-unique-opens">Emails Unique Opens</th>
-			<th class="emails-clicks">Emails Clicks</th>
-			<th class="items-shared">Items Shared</th>
-			<th class="shared-items-click-count">Shared Items Click Count</th>
-			<th class="shared-items-clicks-average">Shared Items Clicks Average</th>
-		</tr>
-  	</thead>
-	<tbody>
 <% unless @orders.empty? %>
 	<% @orders.each do |order| %>
 		<tr class="odd">
-            <td class="date"><%=order.ordered_date %></td>
+            <td class="date" nowrap="nowrap"><%=order.ordered_date %></td>
             <td class="regsitered-orders"><%=order.registered_orders %></td>
             <td class="registered-order-items"><%=order.registered_order_items %></td>
             <td class="emails-sent"><%=order.emails_sent %></td>
@@ -45,56 +28,7 @@ if @page && @page == 'get_webstores'
 <% else %>
 		<tr><td colspan="10"><b><i>No records now</i></b></td></tr>
 <% end %>
-		<!--<tr class="odd">
-            <td class="date">June 11, 2013 06:19</td>
-            <td class="regsitered-orders">89</td>
-            <td class="registered-order-items">355</td>
-            <td class="emails-sent">55</td>
-            <td class="emails-delivered">-</td>
-			<td class="emails-unique-opens">-</td>
-			<td class="emails-clicks">88</td>
-			<td class="items-shared">222</td>
-			<td class="shared-items-click-count">555</td>
-			<td classs="shared-items-clicks-average">555</td>
-      	</tr>
-		<tr>
-            <td class="date">June 11, 2013 06:19</td>
-            <td class="regsitered-orders">89</td>
-            <td class="registered-order-items">355</td>
-            <td class="emails-sent">55</td>
-            <td class="emails-delivered">-</td>
-			<td class="emails-unique-opens">-</td>
-			<td class="emails-clicks">88</td>
-			<td class="items-shared">222</td>
-			<td class="shared-items-click-count">555</td>
-			<td classs="shared-items-clicks-average">555</td>
-       	</tr>
-		<tr class="odd">
-            <td class="date">June 11, 2013 06:19</td>
-            <td class="regsitered-orders">89</td>
-            <td class="registered-order-items">355</td>
-            <td class="emails-sent">55</td>
-            <td class="emails-delivered">-</td>
-			<td class="emails-unique-opens">-</td>
-			<td class="emails-clicks">88</td>
-			<td class="items-shared">222</td>
-			<td class="shared-items-click-count">555</td>
-			<td classs="shared-items-clicks-average">555</td>
-        </tr>
-		<tr class="total">
-            <td class="date"><b>Total</b></td>
-            <td class="regsitered-orders"><b>267</b></td>
-            <td class="registered-order-items"><b>1065</b></td>
-            <td class="emails-sent"><b>165</b></td>
-            <td class="emails-delivered">-</td>
-			<td class="emails-unique-opens">-</td>
-			<td class="emails-clicks"><b>264</b></td>
-			<td class="items-shared"><b>666</b></td>
-			<td class="shared-items-click-count"><b>1665</b></td>
-			<td classs="shared-items-clicks-average"><b>1665</b></td>
-        </tr>-->
-	</tbody>
-</table>		
+
 <%
 end
 %>

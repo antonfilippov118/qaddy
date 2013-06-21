@@ -10,6 +10,7 @@
 	<input name="q[webstore_id_eq]" id="webstore_id" type="hidden" value="">
 	<input name="scope" id="scope" type="hidden" value="daily">
 	<input name="is_admin" id="is_admin" type="hidden" value="<%=admin%>">
+	<input id="id" name="id" value="get_order_statistics" type="hidden">
   	<div class="table_tools">
       	
     	<ul class="scopes table_tools_segmented_control">
@@ -35,8 +36,6 @@
         	<div class="dropdown_menu_list_wrapper" style="display:none;">
 				<div class="dropdown_menu_nipple"></div>
 	          	<ul class="dropdown_menu_list">
-	            	<!--<li data-webstore-id=""><a href="#">All Webstores</a></li>
-					<li data-webstore-id="1"><a href="#">Sergey Webstore</a></li>-->
 	          	</ul>
         	</div>
       	</div>
@@ -49,7 +48,7 @@
           			<table id="index_table_campaigns" class="index_table index" paginator="true" border="0" cellpadding="0" cellspacing="0">
             		<thead>
               			<tr>
-			                <th class="date">Date</th>
+			                <th class="date" nowrap="nowrap" width="150">Date</th>
 			                <th class="registered-orders">Regsitered Orders</th>
 			                <th class="registered-order-items">Registered Order Items</th>
 			                <th class="emails-sent">Emails Sent</th>
@@ -62,54 +61,7 @@
 						</tr>
 			      	</thead>
             		<tbody>
-              			<!--<tr class="odd">
-			                <td class="date">June 11, 2013 06:19</td>
-			                <td class="regsitered-orders">89</td>
-			                <td class="registered-order-items">355</td>
-			                <td class="emails-sent">55</td>
-			                <td class="emails-delivered">-</td>
-							<td class="emails-unique-opens">-</td>
-							<td class="emails-clicks">88</td>
-							<td class="items-shared">222</td>
-							<td class="shared-items-click-count">555</td>
-							<td classs="shared-items-clicks-average">555</td>
-			          	</tr>
-						<tr>
-			                <td class="date">June 11, 2013 06:19</td>
-			                <td class="regsitered-orders">89</td>
-			                <td class="registered-order-items">355</td>
-			                <td class="emails-sent">55</td>
-			                <td class="emails-delivered">-</td>
-							<td class="emails-unique-opens">-</td>
-							<td class="emails-clicks">88</td>
-							<td class="items-shared">222</td>
-							<td class="shared-items-click-count">555</td>
-							<td classs="shared-items-clicks-average">555</td>
-			           	</tr>
-						<tr class="odd">
-			                <td class="date">June 11, 2013 06:19</td>
-			                <td class="regsitered-orders">89</td>
-			                <td class="registered-order-items">355</td>
-			                <td class="emails-sent">55</td>
-			                <td class="emails-delivered">-</td>
-							<td class="emails-unique-opens">-</td>
-							<td class="emails-clicks">88</td>
-							<td class="items-shared">222</td>
-							<td class="shared-items-click-count">555</td>
-							<td classs="shared-items-clicks-average">555</td>
-			            </tr>
-						<tr class="total">
-			                <td class="date"><b>Total</b></td>
-			                <td class="regsitered-orders"><b>267</b></td>
-			                <td class="registered-order-items"><b>1065</b></td>
-			                <td class="emails-sent"><b>165</b></td>
-			                <td class="emails-delivered">-</td>
-							<td class="emails-unique-opens">-</td>
-							<td class="emails-clicks"><b>264</b></td>
-							<td class="items-shared"><b>666</b></td>
-							<td class="shared-items-click-count"><b>1665</b></td>
-							<td classs="shared-items-clicks-average"><b>1665</b></td>
-			            </tr>-->
+              			
             		</tbody>
           			</table>
         		</div>
