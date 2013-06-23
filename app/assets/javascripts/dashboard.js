@@ -21,7 +21,7 @@ function get_data_ajax() {
 		data: params,
         cache: false,
         success: function(html) {
-			$('.index_as_table table tbody').html(html)
+			$('.index_as_table').html(html)
             
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {

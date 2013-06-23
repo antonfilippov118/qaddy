@@ -1,6 +1,7 @@
 <% 
 if @page && @page == 'get_webstores' 
 %>
+
 	<li data-webstore-id="" class="with-seperator selected"><a href="#">All Webstores</a></li>
 	<% unless @webstores.empty? 
 		@webstores.each do |webstore|
@@ -8,9 +9,158 @@ if @page && @page == 'get_webstores'
 	<li data-webstore-id="<%=webstore.id %>"><a href="#"><%=webstore.name %></a></li>
 	<% 	end
 	end %>
+	
 <%	else   %>
 
+	<!-- start of highcharts for statistics -->
+	<div id="highcharts_container">
+  		<script type="text/javascript">
+		$(function () {
+			$('#highcharts').highcharts({
+		        chart: {
+		            type: 'line',
+		            marginRight: 80,
+		            height: 600,
+		            marginLeft: 80
+		        },
+		        exporting:{
+		        	enabled: false
+		        },
+		        title: {
+		            text: '',
+		            x: -20 //center
+		        },
+		        subtitle: {
+		            /*text: '',
+		            x: -20*/
+		        },
+		        xAxis: {
+		            categories: [
+		        <% unless @orders.empty? %>
+					<% @orders.reverse_each do |order| %>
+						'<%= order.ordered_date %>',
+					<% end %>
+				<% end %>
+		            ]
+		        },
+		        yAxis: {
+		            title: {
+		                text: ''
+		            },
+		            plotLines: [{
+		                value: 0,
+		                width: 1,
+		                color: '#808080'
+		            }],
+		            min: 0
+		        },
+		        tooltip: {
+		            valueSuffix: ''
+		        },
+		        legend: {
+		            layout: 'horizontal',
+		            align: 'center',
+		            verticalAlign: 'top',
+
+		           	y: 0,
+		            borderWidth: 0,
+		            itemStyle: {
+		                paddingBottom: '10px'
+		            }
+		        },
+		        series: [{
+		            name: 'Registered Orders',
+		            data: [
+		            <% unless @orders.empty? %>
+						<% @orders.reverse_each do |order| %>
+							<%= order.registered_orders %>,
+						<% end %>
+					<% end %>
+		            ]
+		        }, {
+		            name: 'Registered Order Items',
+		            data: [
+		            <% unless @orders.empty? %>
+						<% @orders.reverse_each do |order| %>
+							<%= order.registered_order_items %>,
+						<% end %>
+					<% end %>
+		            ]
+		        }, {
+		            name: 'Emails Sent',
+		            data: [
+		            <% unless @orders.empty? %>
+						<% @orders.reverse_each do |order| %>
+							<%= order.emails_sent %>,
+						<% end %>
+					<% end %>
+		            ]
+		        }, {
+		            name: 'Emails Clicks',
+		            data: [
+		            <% unless @orders.empty? %>
+						<% @orders.reverse_each do |order| %>
+							<%= order.emails_clicks %>,
+						<% end %>
+					<% end %>
+		            ]
+		        }, {
+		            name: 'Items Shared',
+		            data: [
+		            <% unless @orders.empty? %>
+						<% @orders.reverse_each do |order| %>
+							<%= order.items_shared %>,
+						<% end %>
+					<% end %>
+		            ]
+		        }/*, {
+		            name: 'Shared Items Click Count',
+		            data: [
+		            <% unless @orders.empty? %>
+						<% @orders.reverse_each do |order| %>
+							<%= order.shared_items_click_count %>,
+						<% end %>
+					<% end %>
+		            ]
+		        }*/, {
+		            name: 'Shared Items Clicks Average',
+		            data: [
+		            <% unless @orders.empty? %>
+						<% @orders.reverse_each do |order| %>
+							<%= order.shared_items_clicks_average %>,
+						<% end %>
+					<% end %>
+		            ]
+		        }]
+		    });
+		    
+		    $('.highcharts-tooltip').next().hide();
+		});
+		</script>
+  		<div id="highcharts"></div>
+  	</div>
+  	<!-- end of highcharts for statistics -->
+  	
+  	<!-- start of data table for statistics -->
+	<table id="index_table_campaigns" class="index_table index" paginator="true" border="0" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+            <th class="date" nowrap="nowrap" width="150">Date</th>
+            <th class="registered-orders">Regsitered Orders</th>
+            <th class="registered-order-items">Registered Order Items</th>
+            <th class="emails-sent">Emails Sent</th>
+            <th class="emails-delivered">Emails Delivered</th>
+            <th class="emails-unique-opens">Emails Unique Opens</th>
+			<th class="emails-clicks">Emails Clicks</th>
+			<th class="items-shared">Items Shared</th>
+			<th class="shared-items-click-count">Shared Items Click Count</th>
+			<th class="shared-items-clicks-average">Shared Items Clicks Average</th>
+		</tr>
+  	</thead>
+	<tbody>
+	
 <% unless @orders.empty? %>
+
 	<% @orders.each do |order| %>
 		<tr class="odd">
             <td class="date" nowrap="nowrap"><%=order.ordered_date %></td>
@@ -25,10 +175,17 @@ if @page && @page == 'get_webstores'
 			<td classs="shared-items-clicks-average"><%=order.shared_items_clicks_average %></td>
       	</tr>
 	<% end %>	
+	
 <% else %>
+
 		<tr><td colspan="10"><b><i>No records now</i></b></td></tr>
+		
 <% end %>
 
+	</tbody>
+	</table>
+	<!-- end of data table for statistics -->
+	
 <%
 end
 %>

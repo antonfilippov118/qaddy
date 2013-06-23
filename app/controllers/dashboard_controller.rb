@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
   
   def show
     @page = params[:id]
-    if params[:id] && params[:id] == 'get_order_statistics'
+    if params[:id] && (params[:id] == 'get_order_statistics')
     
       now = DateTime.now()
       
@@ -85,6 +85,9 @@ class DashboardController < ApplicationController
       end
 
     end
+    
+    
+    
   end
   
   
