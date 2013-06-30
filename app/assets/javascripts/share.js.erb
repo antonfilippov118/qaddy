@@ -69,8 +69,23 @@ function checkLoginStatus(response) {
   $('#login').removeAttr('disabled');
 
   if (response && response.status == 'connected') {
-    fbLoggedIn = true;
+    FB.api('/me/permissions', function(perms_response) {
+      if (perms_response['data'][0]['publish_actions']) {
+        fbLoggedIn = true;
+        prepareShareButtons();
+      } else {
+        fbLoggedIn = false
+        prepareShareButtons();
+      }
+    });
+  } else {
+    fbLoggedIn = false;
+    prepareShareButtons();
+  }
+}
 
+function prepareShareButtons() {
+  if (fbLoggedIn) {
     var fbsessUrl = $('#pathurlinfo').data('fbsessurl');
     $.get(fbsessUrl);
 
@@ -85,8 +100,6 @@ function checkLoginStatus(response) {
     $('.sharebtn').removeClass('disabled');
     $('.sharebtn').removeAttr('disabled');
   } else {
-    fbLoggedIn = false;
-
     var txt = $('#login').data('logintext');
     $('#login').text(txt);
     $('#logout').addClass('hide');
@@ -99,4 +112,3 @@ function checkLoginStatus(response) {
     $('.sharebtn').removeAttr('disabled');
   }
 }
-

@@ -116,7 +116,6 @@ class ShareController < ApplicationController
     end
 
     body = { text: @success ? "Compartido!" : "Error..." }
-    # respond_with(body, status: :created)
 
     respond_to do |format|
       format.html { render 'doshare' }
