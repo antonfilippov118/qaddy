@@ -16,3 +16,5 @@
 
 # system files
 .DS_Store
+.project
+/app/views/dashboard/.tmp*

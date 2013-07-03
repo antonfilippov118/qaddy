@@ -1,0 +1,61 @@
+<script id="dashboard_script" src="/assets/dashboard.js" type="text/javascript"></script>
+<script id="dashboard_script" src="/assets/highcharts3.02/highcharts.js" type="text/javascript"></script>
+<script id="dashboard_script" src="/assets/highcharts3.02/modules/exporting.js" type="text/javascript"></script>
+<link href="/assets/dashboard.css" media="screen" rel="stylesheet" type="text/css">
+
+
+
+<form accept-charset="UTF-8" action="/admin/dashboard" id="collection_selection" method="post">
+	<div style="margin:0;padding:0;display:inline">
+		<input name="utf8" value="✓" type="hidden">
+		<input name="authenticity_token" value="jQhzUviuASYhHgv50XZQZ4wsTBlgWHe+V5MW2vfM1tM=" type="hidden">
+	</div>              
+	<input name="q[webstore_id_eq]" id="webstore_id" type="hidden" value="">
+	<input name="scope" id="scope" type="hidden" value="daily">
+	<input name="is_admin" id="is_admin" type="hidden" value="<%=admin%>">
+	<input id="id" name="id" value="get_order_statistics" type="hidden">
+  	<div class="table_tools">
+      	
+    	<ul class="scopes table_tools_segmented_control">
+      		<li class="scope daily selected" data-scope="daily">
+        		<a href="#" class="table_tools_button">
+					Daily
+        		</a>
+      		</li>
+      		<li class="scope weekly" data-scope="weekly">
+        		<a href="#" class="table_tools_button">
+					Weekly
+        		</a>
+      		</li>
+      		<li class="scope monthly" data-scope="monthly">
+        		<a href="#" class="table_tools_button">
+					Monthly
+        		</a>
+      		</li>
+    	</ul>
+		
+		<div class="dropdown_menu" id="webstore_selector">
+        	<a class="dropdown_menu_button" href="#">All Webstores</a>
+        	<div class="dropdown_menu_list_wrapper" style="display:none;">
+				<div class="dropdown_menu_nipple"></div>
+	          	<ul class="dropdown_menu_list">
+	          	</ul>
+        	</div>
+      	</div>
+		
+  	</div>
+  	
+  	<div class="paginated_collection">
+    	<div class="paginated_collection_contents">
+      		<div class="index_content">
+        		<div class="index_as_table">
+        			
+        		</div>
+      		</div>
+    	</div>
+	    <div id="index_footer">
+	      	<!--<div class="pagination_information">Mostrando <b>3</b> Records</div>-->
+	      	<!--<div class="download_links">Descargar:&nbsp;<a href="/admin/campaigns.csv">CSV</a>&nbsp;<a href="/admin/campaigns.xml">XML</a>&nbsp;<a href="/admin/campaigns.json">JSON</a></div>-->
+	    </div>
+  	</div>
+</form>          

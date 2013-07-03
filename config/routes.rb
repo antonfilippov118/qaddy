@@ -6,6 +6,10 @@ Qaddy::Application.routes.draw do
 
   # root for staging
   root :to => "static_pages#landing"
+  
+  #dashboard
+  match '/dashboard/get_order_statistics', to: 'dashboard#show', via: :post
+  match '/dashboard/get_webstores', to: 'dashboard#show', via: :get
 
   # static_pages
   match '/oldhome', to: 'static_pages#index'

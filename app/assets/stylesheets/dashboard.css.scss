@@ -1,0 +1,18 @@
+body.active_admin .dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li.selected a {
+	background: #75a1c2;
+	background: -webkit-linear-gradient(-90deg, #75a1c2, #608cb4);
+	background: -moz-linear-gradient(-90deg, #75a1c2, #608cb4);
+	background: linear, -90deg, #75a1c2, #608cb4;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF75A1C2', endColorstr='#FF608CB4');
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF75A1C2', endColorstr='#FF608CB4');
+	text-shadow: #5a83aa 0 1px 0;
+	color: #FFF;
+}
+
+body.active_admin .dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li {
+	border-bottom: 0;
+}
+
+body.active_admin .dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li.with-seperator {
+	border-bottom: 1px dashed #5e6469;
+}
