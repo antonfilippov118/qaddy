@@ -1,7 +1,7 @@
 class Webstore < ActiveRecord::Base
   belongs_to :user
   has_many :orders, dependent: :destroy
-  has_many :email_banners, dependent: :destroy
+  has_many :email_banners, dependent: :destroy # not in use anymore, delete?
   has_many :campaigns, dependent: :destroy
   has_many :default_sharing_texts, dependent: :destroy
   has_many :import_jobs, dependent: :destroy
