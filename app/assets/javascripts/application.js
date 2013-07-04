@@ -15,3 +15,4 @@
 //= require bootstrap
 //= require rails.validations
 //= require rails.validations.simple_form
+//= require static_pages

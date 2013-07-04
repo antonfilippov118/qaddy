@@ -66,10 +66,10 @@ Qaddy::Application.configure do
   # # config.assets.precompile += %w( search.js )
   # # js
   # config.assets.precompile += %w( active_admin.js )
-  # config.assets.precompile += %w( share.js )
   # config.assets.precompile += %w( dashboard.js )
   # config.assets.precompile += %w( highcharts3.02/highcharts.js )
   # config.assets.precompile += %w( highcharts3.02/modules/exporting.js )
+  # config.assets.precompile += %w( share.js )
   # # css
   # config.assets.precompile += %w( active_admin.css )
   # config.assets.precompile += %w( active_admin/print.css )

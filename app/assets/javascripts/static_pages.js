@@ -36,7 +36,7 @@ $(document).ready(function() {
     })
     .bind('ajax:error', function(evt, xhr, status, error) {
       var responseObject = $.parseJSON(xhr.responseText), errors = $('<ul />');
-      $.each(responseObject.errors, function(index, value){
+      $.each(responseObject.errors, function(index, value) {
         errors.append('<li>' + value + '</li>');
       })
       $(this).find('.errors').html(errors);
