@@ -31,16 +31,19 @@ class DashboardController < ApplicationController
       
       if params['scope'] == 'daily'
         where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now - 30).strftime('%Y-%m-%d') + "'"
+        @date_range = 'from ' + (now-30).strftime('%d %b, %Y') + ' to ' + now.strftime('%d %b, %Y')
       end
       
       if params['scope'] == 'monthly'
         group_clause = "strftime('%Y-%m', orders.created_at)"
         where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now << 12).strftime('%Y-%m-%d') + "'"
+        @date_range = 'from ' + (now << 12).strftime('%b, %Y') + ' to ' + now.strftime('%b, %Y')
       end
       
       if params['scope'] == 'weekly'
         group_clause = "strftime('%Y-%W', orders.created_at)"
         where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now - 7 * 26).strftime('%Y-%m-%d') + "'"
+        @date_range = 'from ' + (now-7*26).strftime('%d %b, %Y') + ' to ' + now.strftime('%d %b, %Y')
       end
       
       select_clause += ", count(DISTINCT orders.id) as registered_orders"

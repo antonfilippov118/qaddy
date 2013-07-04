@@ -27,13 +27,18 @@ if @page && @page == 'get_webstores'
 		        	enabled: false
 		        },
 		        title: {
-		            text: '',
-		            x: -20 //center
+		            text: 'Selected date range: <%=@date_range %>',
+		            x: -20, //center
+		            y: 5
 		        },
+		        <% if @orders.empty? %>
 		        subtitle: {
-		            /*text: '',
-		            x: -20*/
+		        	useHTML: true,
+		            text: '<b>No Records Now</b>',
+		            x: -20,
+		            y: 40
 		        },
+		        <% end %>
 		        xAxis: {
 		            categories: [
 		        <% unless @orders.empty? %>
@@ -62,7 +67,7 @@ if @page && @page == 'get_webstores'
 		            align: 'center',
 		            verticalAlign: 'top',
 
-		           	y: 0,
+		           	y: 5,
 		            borderWidth: 0,
 		            itemStyle: {
 		                paddingBottom: '10px'

@@ -39,6 +39,7 @@ function get_webstores_ajax() {
         type: 'GET',
         cache: false,
         success: function(html) {
+			
 			$('#webstore_selector .dropdown_menu_list').html(html)
 			$('#webstore_selector ul.dropdown_menu_list > li').click(function(){
 				$('#webstore_id').val($(this).data('webstore-id'));
