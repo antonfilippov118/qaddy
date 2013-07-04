@@ -1,41 +1,37 @@
-$(document).ready(function(){
+$(document).ready(function() {
 	get_webstores_ajax();
 	get_data_ajax();
 	
-	$('.scope').click(function(){
+	$('.scope').click(function() {
 		$('.scope').removeClass('selected');
 		$(this).addClass('selected');
 		$('#scope').val($(this).data('scope'));
 		
 		get_data_ajax();
-		
+
+        return false;
 	});
 });
 
 function get_data_ajax() {
-
 	var params = $('#collection_selection').serializeArray();
 	$.ajax({
-        url: "/dashboard/get_order_statistics",
+        url: $('#pathurlinfo').data('dashboardgetorderstatisticsurl'),
         type: 'POST',
 		data: params,
         cache: false,
         success: function(html) {
 			$('.index_as_table').html(html)
-            
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-
         }
-        
-
     });
 };
 
 function get_webstores_ajax() {
 	var is_admin = $('#is_admin').val();
 	$.ajax({
-        url: "/dashboard/get_webstores?is_admin=" + is_admin + "&id=get_webstores",
+        url: $('#pathurlinfo').data('dashboardgetwebstoresurl') + is_admin + "&id=get_webstores",
         type: 'GET',
         cache: false,
         success: function(html) {
@@ -46,14 +42,9 @@ function get_webstores_ajax() {
 				$(this).parent().find('li.selected').removeClass('selected');
 				$(this).addClass('selected');
 				get_data_ajax();
-				
 			})
-            
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-
         }
-        
-
     });
 };

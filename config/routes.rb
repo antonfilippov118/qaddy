@@ -8,8 +8,8 @@ Qaddy::Application.routes.draw do
   root :to => "static_pages#landing"
   
   #dashboard
-  match '/dashboard/get_order_statistics', to: 'dashboard#show', via: :post
-  match '/dashboard/get_webstores', to: 'dashboard#show', via: :get
+  match '/dashboard/get_order_statistics',  to: 'dashboard#show', via: :post, as: :dashboard_get_order_statistics
+  match '/dashboard/get_webstores',         to: 'dashboard#show', via: :get,  as: :dashboard_get_webstores
 
   # static_pages
   match '/oldhome', to: 'static_pages#index'
