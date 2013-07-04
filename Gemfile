@@ -18,7 +18,7 @@ group :test do
 end
 
 group :production do
-  #ruby "1.9.3"
+  ruby "1.9.3"
   gem 'pg'
   gem 'newrelic_rpm'
 end
