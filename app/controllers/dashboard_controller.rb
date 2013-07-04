@@ -11,6 +11,7 @@ class DashboardController < ApplicationController
   
   def show
     @page = params[:id]
+
     if params[:id] && (params[:id] == 'get_order_statistics')
     
       now = DateTime.now()
@@ -75,7 +76,6 @@ class DashboardController < ApplicationController
         if params[:scope] == 'weekly'
           order.ordered_date = (DateTime.parse(order.ordered_date).beginning_of_week).strftime('%d %b') + " - " + (DateTime.parse(order.ordered_date).beginning_of_week + 6).strftime('%d %b, %Y')
         end
-        
       end
       
     end
@@ -86,11 +86,8 @@ class DashboardController < ApplicationController
       else
         @webstores = Webstore.where(:user_id => current_user.id)
       end
-
     end
-    
-    
-    
+
   end
   
   
@@ -102,6 +99,5 @@ class DashboardController < ApplicationController
         redirect_to signin_url, notice: "Please sign in."
       end
     end
-
 
 end

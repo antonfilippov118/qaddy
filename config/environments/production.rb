@@ -56,7 +56,19 @@ Qaddy::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w[custom.css share.css share.js active_admin.css active_admin/print.css active_admin.js]
+  # config.assets.precompile += %w[custom.css share.css share.js active_admin.css active_admin/print.css active_admin.js]
+  config.assets.precompile += %w( active_admin.js )
+  config.assets.precompile += %w( share.js )
+  config.assets.precompile += %w( dashboard.js )
+  config.assets.precompile += %w( highcharts3.02/highcharts.js )
+  config.assets.precompile += %w( highcharts3.02/modules/exporting.js )
+
+  config.assets.precompile += %w( active_admin.css )
+  config.assets.precompile += %w( active_admin/print.css )
+  config.assets.precompile += %w( custom.css )
+  config.assets.precompile += %w( dashboard.css )
+  config.assets.precompile += %w( share.css )
+  
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
