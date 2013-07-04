@@ -12,13 +12,15 @@ class DashboardController < ApplicationController
   def show
     @page = params[:id]
 
+    # get_order_statistics
+
     if params[:id] && (params[:id] == 'get_order_statistics')
     
       now = DateTime.now()
       
       where_clause = "1 = 1"
       
-      if params[:is_admin] == 'false'
+      if !current_user.admin? || params[:is_admin] == 'false'
         where_clause += " and webstores.user_id=#{current_user.id}"
       end
       
@@ -32,19 +34,19 @@ class DashboardController < ApplicationController
       
       if params['scope'] == 'daily'
         where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now - 30).strftime('%Y-%m-%d') + "'"
-        @date_range = 'from ' + (now-30).strftime('%d %b, %Y') + ' to ' + now.strftime('%d %b, %Y')
+        @date_range = (now-30).strftime('%d %b, %Y') + ' - ' + now.strftime('%d %b, %Y')
       end
       
       if params['scope'] == 'monthly'
         group_clause = "strftime('%Y-%m', orders.created_at)"
         where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now << 12).strftime('%Y-%m-%d') + "'"
-        @date_range = 'from ' + (now << 12).strftime('%b, %Y') + ' to ' + now.strftime('%b, %Y')
+        @date_range = (now << 12).strftime('%b, %Y') + ' - ' + now.strftime('%b, %Y')
       end
       
       if params['scope'] == 'weekly'
         group_clause = "strftime('%Y-%W', orders.created_at)"
         where_clause += " and strftime('%Y-%m-%d', orders.created_at) >= '" + (now - 7 * 26).strftime('%Y-%m-%d') + "'"
-        @date_range = 'from ' + (now-7*26).strftime('%d %b, %Y') + ' to ' + now.strftime('%d %b, %Y')
+        @date_range = (now-7*26).strftime('%d %b, %Y') + ' - ' + now.strftime('%d %b, %Y')
       end
       
       select_clause += ", count(DISTINCT orders.id) as registered_orders"
@@ -79,9 +81,11 @@ class DashboardController < ApplicationController
       end
       
     end
+
+    # get_webstores
     
     if params[:id] && params[:id] == 'get_webstores'
-      if current_user.admin && params[:is_admin] == 'true'
+      if current_user.admin? && params[:is_admin] == 'true'
         @webstores = Webstore.all
       else
         @webstores = Webstore.where(:user_id => current_user.id)

@@ -34,7 +34,7 @@ if @page && @page == 'get_webstores'
 		        <% if @orders.empty? %>
 		        subtitle: {
 		        	useHTML: true,
-		            text: '<b>No Records Now</b>',
+		            text: '<b>No Records To Show</b>',
 		            x: -20,
 		            y: 40
 		        },
@@ -182,7 +182,7 @@ if @page && @page == 'get_webstores'
 	
 <% else %>
 
-		<tr><td colspan="10"><b><i>No records now</i></b></td></tr>
+		<tr><td colspan="10"><b><i>No records to show</i></b></td></tr>
 		
 <% end %>
 

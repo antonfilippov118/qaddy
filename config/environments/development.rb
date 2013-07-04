@@ -49,14 +49,13 @@ Qaddy::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # TODO: Enable after testing asset pipeline in development
+  # # Disable to test asset pipeline in development
   # Do not compress assets
   config.assets.compress = false
-
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # TODO: Disable after testing asset pipeline in development
+  # Enable to test asset pipeline in development
   # # Compress JavaScripts and CSS
   # config.assets.compress = true
   # # Don't fallback to assets pipeline if a precompiled asset is missed
@@ -65,12 +64,13 @@ Qaddy::Application.configure do
   # config.assets.digest = true
   # # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # # config.assets.precompile += %w( search.js )
+  # # js
   # config.assets.precompile += %w( active_admin.js )
   # config.assets.precompile += %w( share.js )
   # config.assets.precompile += %w( dashboard.js )
   # config.assets.precompile += %w( highcharts3.02/highcharts.js )
   # config.assets.precompile += %w( highcharts3.02/modules/exporting.js )
-
+  # # css
   # config.assets.precompile += %w( active_admin.css )
   # config.assets.precompile += %w( active_admin/print.css )
   # config.assets.precompile += %w( custom.css )

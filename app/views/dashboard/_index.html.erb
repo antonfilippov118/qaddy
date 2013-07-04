@@ -3,7 +3,7 @@
 <%= javascript_include_tag "highcharts3.02/modules/exporting" %>
 <%= stylesheet_link_tag "dashboard", media: "all" %>
 
-<%= form_tag admin_dashboard_path, method: :post, id: "collection_selection" do %>
+<%= form_tag admin ? admin_dashboard_path : retailer_dashboard_path, method: :post, id: "collection_selection" do %>
 	<input name="q[webstore_id_eq]" id="webstore_id" type="hidden" value="">
 	<input name="scope" id="scope" type="hidden" value="daily">
 	<input name="is_admin" id="is_admin" type="hidden" value="<%=admin%>">
